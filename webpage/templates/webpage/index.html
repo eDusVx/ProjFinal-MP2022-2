@@ -56,12 +56,19 @@
             </div>
             <div id="content" class="w-full flex flex-col px-8 pt-8 border-t">
                 {% for p in pratos %}
-                    <div class="flex items-center justify-between border shadow rounded py-6 px-4">
+                    <div class=" {% if not p.has_estoque %} bg-gray-50 opacity-25 {% endif %} flex items-center justify-between border shadow rounded py-6 px-4">
                         <div class="flex items-center space-x-4">
-                            <img class="w-[100px] rounded" src="{{p.foto.url }}"/>
-                            <span class="text-[24px] font-bold">{{p.nome}}</span>
+                            <img class="w-[100px] rounded" src="{{p.prato.foto.url }}"/>
+                            <span class="text-[24px] font-bold">{{p.prato}}</span>
                         </div>
-                        <span class="text-lg font-medium">R${{p.preco}}</span> 
+                        <ul>
+                            {% for i in p.ingredientes %}
+                            <li>
+                                {{i}} - {{i.quantidade}}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <span class="text-lg font-medium">{% if not p.has_estoque %} sem estoque {% else %} {{p.prato.preco}} {% endif %}</span> 
                     </div>
                 {% endfor %}
             </div>

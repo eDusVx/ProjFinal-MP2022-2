@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'webpage.apps.WebpageConfig',
     'tailwind',
     'theme',
+    'djmoney',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -88,8 +89,12 @@ WSGI_APPLICATION = 'ristorante.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'projeto_ristoran',
+        'USER': 'root_ristorante',
+        'PASSWORD': 'ristorante123456',
+        'HOST': 'db4free.net',
+        'PORT': '3306'
     }
 }
 
