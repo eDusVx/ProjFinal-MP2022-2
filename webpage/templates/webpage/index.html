@@ -54,10 +54,90 @@
                     </button>                
                 </div>
             </div>
-            <div class="w-full border-t">
+            <div id="content" class="w-full flex flex-col px-8 pt-8 border-t">
+                {% for p in pratos %}
+                    <div onclick="openPratoDesc({{p.prato.id}})" class=" {% if not p.has_estoque %} bg-gray-50 opacity-25 cursor-not-allowed {% else %} cursor-pointer {% endif %} flex items-center justify-between border shadow rounded py-6 px-4">
+                        <div class="flex items-center space-x-4">
+                            <img class="w-[100px] rounded" src="{{p.prato.foto.url }}"/>
+                            <span class="text-[24px] font-bold">{{p.prato}}</span>
+                        </div>
+                        <ul>
+                            {% for i in p.ingredientes %}
+                            <li>
+                                {{i}} - {{i.quantidade}}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <span class="text-lg font-medium">{% if not p.has_estoque %} sem estoque {% else %} {{p.prato.preco}} {% endif %}</span> 
+                    </div>
+                    <div id="modal_prato_{{p.prato.id}}" class="hidden bg-gray-50/75 absolute left-0 top-0 z-10 w-[100vw] m-0 p-0 h-[100vh] flex justify-center items-center">
+                        <div class="bg-white w-[50%] opacity-1 border z-20 overflow-y-hidden rounded h-[50%]">
+                            <div class="flex justify-end h-[5%]">
+                                <svg onclick="closePratoDesc({{p.prato.id}})" class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </div>
+                            <div class=" h-[95%] grid grid-cols-2 shadow">
+                                <div class="w-[100%] flex flex-col px-6">
+                                    <h1>{{p.prato}}</h1>
+                                    <img class="w-[100%] rounded" src="{{p.prato.foto.url }}"/>
+                                    <span class="text-lg font-medium">{% if not p.has_estoque %} sem estoque {% else %} {{p.prato.preco}} {% endif %}</span> 
+                                </div>
+                                <div class="w-[100%] overflow-y-auto space-y-4">
+                                    {% for i in p.ingredientes %}
+                                        <table class="mx-auto w-[85%] text-left table-fixed text-sm font-medium">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{i}} </th><th> {{i.quantidade}}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Valor Energetico </td><td> {{i.valor_energetico}}cal</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>carboidratos </td><td> {{i.carboidratos}}g</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>proteinas </td><td> {{i.proteinas}}g</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>gorduras </td><td> {{i.gorduras}}g</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>fibra_alimentar </td><td> {{i.fibra_alimentar}}g</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>sodio </td><td> {{i.sodio}}g</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>acucares </td><td> {{i.acucares}}g</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>colesterol </td><td> {{i.colesterol}}g</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    {% endfor %}
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                {% endfor %}
                 
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+    function openPratoDesc(prato){
+        div = document.getElementById(`modal_prato_${prato}`)
+        div.classList.remove("hidden");
+    }
+    function closePratoDesc(prato){
+        div = document.getElementById(`modal_prato_${prato}`)
+        div.classList.add("hidden");
+    }
+</script>
