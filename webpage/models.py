@@ -6,7 +6,9 @@ from datetime import datetime, timezone
 from djmoney.models.fields import MoneyField
 
 # Create your models here.
-    
+
+CHOICES = (("1", "Pedido"), ("2", "Fazendo"), ("3", "Pronto"))
+
 class Garcon(models.Model):
     nome_completo = models.CharField(max_length=350)
     email = models.CharField(unique=True,max_length=150,default="default@email.com")
@@ -47,6 +49,7 @@ class Pedido(models.Model):
     garcon = models.ForeignKey(Garcon, on_delete=models.CASCADE, default=0)
     mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE)
     prato = models.ManyToManyField(Prato, through='pedido_has_prato')
+    status = forms.ChoiceField(widget=forms.Select, choices=CHOICES)
 
 class pedido_has_prato(models.Model):
     prato = models.ForeignKey(Prato, on_delete=models.CASCADE)

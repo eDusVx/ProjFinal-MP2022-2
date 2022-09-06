@@ -8,7 +8,7 @@ def index(request):
     for prato in pratosRaw:
         ingredientes = prato.ingredientes.all()
         for ingrediente in ingredientes:
-            has_estoque = Estoque.objects.filter(ingrediente=ingrediente,quantidade__gt=0,validade__lte=datetime.now()).values()
+            has_estoque = Estoque.objects.filter(ingrediente=ingrediente,quantidade__gt=0,validade__gte=datetime.now()).values()
             if not list(has_estoque):
                 has_estoque = False
                 
