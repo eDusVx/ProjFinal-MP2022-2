@@ -1,2 +1,4 @@
-# ProjFinal MP 2022/2
-Projeto final da disciplina de Métodos de Programação 2022/2
+## antes de tudo rodem o seguinte codigo para instalar todas as dependencias
+~~~
+pip install -r reqs.txt
+~~~
