@@ -9,8 +9,8 @@ from django.forms import ModelForm
 
 # Create your models here.
 
-CHOICES = [("1", "Pedido"), ("2", "Fazendo"), ("3", "Pronto")]
-
+CHOICES = [("Pedido","Pedido"), ("Fazendo","Fazendo"), ("Pronto","Pronto")]
+TIPO_PRATO = [("Entrada","Entrada"),("Executivo","Executivo"),("Carne","Carne"),("Peixe","Peixe"),("Frango","Frango"),("Massa","Massa"),("Vegano/Vegetariano","Vegano/Vegetariano"),("Bebidas","Bebidas"),("Sobremesa","Sobremesa")]
 class Garcon(models.Model):
     nome_completo = models.CharField(max_length=350)
     email = models.CharField(unique=True,max_length=150,default="default@email.com")
@@ -41,6 +41,7 @@ class Prato(models.Model):
     nome = models.CharField(max_length=350)
     foto = models.ImageField(upload_to ='Images')
     preco = MoneyField(max_digits=14, decimal_places=2, default_currency='BRL')
+    tipo = models.CharField(max_length=100, choices=TIPO_PRATO, default=None)
     ingredientes = models.ManyToManyField(Ingrediente, through='prato_has_ingrediente')
     def __str__(self):
         return self.nome.upper()
@@ -51,7 +52,7 @@ class Pedido(models.Model):
     garcon = models.ForeignKey(Garcon, on_delete=models.CASCADE, default=0)
     mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE)
     prato = models.ManyToManyField(Prato, through='pedido_has_prato')    
-    status = models.CharField(max_length=100, choices=CHOICES)
+    status = models.CharField(max_length=100, choices=CHOICES, default="Pedido")
 
 class pedido_has_prato(models.Model):
     prato = models.ForeignKey(Prato, on_delete=models.CASCADE)
@@ -61,7 +62,7 @@ class pedido_has_prato(models.Model):
 class prato_has_ingrediente(models.Model):
     prato = models.ForeignKey(Prato, on_delete=models.CASCADE)
     ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
-    quantidade = models.IntegerField(max_length=3)
+    quantidade = models.FloatField(max_length=3)
 
 class Estoque(models.Model):
     ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
