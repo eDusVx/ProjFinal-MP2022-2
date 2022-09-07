@@ -1,0 +1,3 @@
+.env
+ristorante/__pycache__/*
+webpage/__pycache__/*
