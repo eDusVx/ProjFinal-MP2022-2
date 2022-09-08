@@ -1,0 +1,69 @@
+{%  extends 'webpage/funcionario/main.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Mesas:</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Mesa</th>
+					<th>Garçom responsável</th>
+				</tr>
+
+				{% for customer in customers %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Ver</a></td>
+						<td>{{customer.numero}}</td>
+						<td>{{customer.garcon_responsavel}}</td>
+						<td><a class="btn btn-sm btn-danger" href="">Fechar conta</a></td>
+
+					</tr>
+				{% endfor %}
+			</table>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'registrar_mesa' %}">Abrir mesa</a>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Últimos pedidos</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Produto</th>
+					<th>Garçom</th>
+					<th>Mesa</th>
+					<th>Status</th>
+					<th>Atualizar</th>
+					<th>Remover</th>
+				</tr>
+
+				{% for order in orders %}
+					<tr>
+						<td>{{order.pratos}}</td>
+						<td>{{order.garcon}}</td>
+						<td>{{order.mesa}}</td>
+						<td>{{order.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+

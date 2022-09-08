@@ -1,0 +1,55 @@
+{%  extends 'webpage/funcionario/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Mesa: {{customer.numero}}</h5>
+			<h5>Garçom responsável: {{customer.garcon_responsavel}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Registrar pedido</a>
+
+		</div>
+	</div>
+	<div class="col-md">
+		<div class="card card-body">
+			<h5 class="card-title">Número de pedidos: {{order_count}}</h5>
+			<h5 class="card-title">Pedidos pendentes: {{pending}}</h5>
+			<h5 class="card-title">Pedidos prontos: {{delivered}}</h5>
+			<hr>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Produto</th>
+					<th>Garçon</th>
+					<th>Status</th>
+					<th>Atualizar</th>
+					<th>Remover</th>
+				</tr>
+
+				{% for order in orders %}
+
+				<tr>
+					<td>{{order.pratos}}</td>
+					<td>{{order.garcon}}</td>
+					<td>{{order.status}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
