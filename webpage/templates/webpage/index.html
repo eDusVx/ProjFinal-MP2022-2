@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="http://example.com/favicon.png">
+    <title>Ristorante</title>
+  </head>
+  <body>
+    <div class="w-[100vw] h-[100vh] bg-orange-300 flex items-center justify-center">
+      <div
+        class="bg-orange-100 flex flex-col items-center justify-start w-[80%] h-[100%]"
+      >
+        <div
+          id="header"
+          class="self-start flex justify-between items-center w-full pt-6 pb-2 px-6"
+            >
+          <div>
+            <button onclick="openMenu()" class="flex space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              <span class="font-medium"> Menu </span>
+            </button>
+          </div>
+          <div>
+            <img
+              class="w-[100px]"
+              src="https://i.pinimg.com/736x/f9/65/0b/f9650beef1e6e92578525e7c8f97bc21.jpg"
+              alt="Logo"
+            />
+          </div>
+          <div class="hidden sm:block">
+            <button class=" hidden flex space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+                >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+                />
+              </svg>
+              <span class="font-medium"> Buscar </span>
+            </button>
+          </div>
+        </div>
+        <div
+          id="menu_lateral"
+          class="hidden absolute left-0 top-0 z-10 w-[100vw] m-0 p-0 h-[100vh] flex justify-start items-center"
+            >
+          <div
+            id="menu_tab"
+            class="relative bg-white w-[50%] md:w-[35%] lg:w-[20%] opacity-1 border z-30 overflow-y-hidden rounded h-[100%]"
+          >
+            <div class="h-[100%] shadow">
+              <div class="w-[100%] flex flex-col px-6">
+                <a href="/login" class="flex items-center cursor-pointer py-2 space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>                      
+                        <span class="text-sm">Sou Funcionário</span>
+                </a>
+                <div class="border-t py-4">
+                    <span class="text-lg font-bold">Menu</span>
+                </div>
+                <div class="space-y-2">
+                    <div onclick="addFilterInQuery('Entrada')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Entrada</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Executivo')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Executivo</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Carne')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Carne</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Peixe')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Peixe</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Frango')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Frango</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Massa')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Massa</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Vegano/Vegetariano')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Vegano/Vegetariano</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Bebidas')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Bebidas</span>
+                    </div>
+                    <div onclick="addFilterInQuery('Sobremesa')" class="py-2 w-[80%] bg-white hover:border px-2 rounded hover:bg-gray-50">
+                        <span class="text-base font-medium">Sobremesa</span>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="menu_blur_side"
+            onclick="closeMenu()"
+            class="absolute top-0 left-0 h-[100%] w-[100%] overflow-hidden bg-gray-50/75 z-20"
+          >
+            <div class="hidden"></div>
+          </div>
+        </div>
+        <div id="content" class="w-full space-y-4 flex flex-col sm:px-8 pt-8 border-t">
+            <div class="flex w-full space-x-2">
+                {% for tipo in tipos %}
+                    <div class="max-w-[75px] px-2 rounded-full h-[25px] bg-red-50 flex items-center">
+                        <span class="text-sm font-medium">{{tipo}}</span>
+                        <svg
+                            onclick="removeFilter('{{tipo}}')"
+                            class="cursor-pointer ml-2 w-[20%]"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                            >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </div>
+                {% endfor %}
+            </div>
+            
+          {% for p in pratos %}
+          <div
+            onclick="openPratoDesc({{p.prato.id}})"
+            class="{% if not p.has_estoque %} bg-gray-50 opacity-25 cursor-not-allowed {% else %} cursor-pointer hover:scale-105 {% endif %} bg-white flex items-center justify-between border shadow rounded py-6 px-4"
+          >
+            <div class="flex items-center space-x-4">
+              <img class="w-[100px] rounded" src="{{p.prato.foto.url }}" />
+              <div class="flex flex-col sm:hidden">
+                <span class="text-sm lg:text-[24px] w-[150px] lg:w-[350px] truncate font-bold">{{p.prato}}</span>
+                <span class="text-sm lg:text-lg font-medium"
+                >{% if not p.has_estoque %} Sem estoque {% else %}
+                {{p.prato.preco}} {% endif %}</span>
+              </div>
+              <span class="text-sm hidden md:block lg:text-[24px] w-[150px] lg:w-[350px] truncate font-bold">{{p.prato}}</span>
+              <div class="hidden sm:block max-w-[150px] px-2 rounded-full h-[25px] bg-red-50 flex justify-center items-center">
+                <span class="text-sm font-medium">{{p.prato.tipo}}</span>
+              </div>
+            </div>
+            <ul class="overflow-y-auto hidden lg:block max-h-[60px]">
+              {% for i in p.ingredientes %}
+              <li>{{i.ingrediente}} - {{i.quantidade_total}}</li>
+              {% endfor %}
+            </ul>
+            <span class="text-sm lg:text-lg hidden md:block font-medium"
+              >{% if not p.has_estoque %} Sem estoque {% else %}
+              {{p.prato.preco}} {% endif %}</span>
+          </div>
+          <div
+            id="modal_prato_{{p.prato.id}}"
+            class="hidden bg-gray-50/75 absolute left-0 top-0 z-10 w-[98%] m-0 p-0 h-[98%] flex justify-center items-center"
+          >
+            <div
+              class="bg-white w-[90%] lg:w-[50%] opacity-1 border z-20 overflow-y-hidden rounded h-[90%] lg:h-[50%]"
+            >
+              <div class="flex justify-end h-[5%]">
+                <svg
+                  onclick="closePratoDesc({{p.prato.id}})"
+                  class="cursor-pointer"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </div>
+              <div class="h-[95%] grid grid-rows-2 sm:grid-rows-1 sm:grid-cols-2">
+                <div class="w-[100%] flex flex-col justify-center space-y-2 sm:justify-start px-6">
+                  <h1>{{p.prato}}</h1>
+                  <img class="w-[100%] rounded" src="{{p.prato.foto.url }}" />
+                  <span class="text-lg font-medium"
+                    >{% if not p.has_estoque %} Sem estoque {% else %}
+                    {{p.prato.preco}} {% endif %}</span
+                  >
+                </div>
+                <div class="w-[100%] overflow-y-auto space-y-4">
+                  {% for i in p.ingredientes %}
+                  <table
+                    class="mx-auto w-[85%] text-left table-fixed text-sm font-medium"
+                  >
+                    <thead>
+                      <tr>
+                        <th>{{i.ingrediente}}</th>
+                        <th>{{i.detalhes.quantidade}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Valor Energetico</td>
+                        <td>{{i.detalhes.valor_energetico}}cal</td>
+                      </tr>
+                      <tr>
+                        <td>carboidratos</td>
+                        <td>{{i.detalhes.carboidratos}}g</td>
+                      </tr>
+                      <tr>
+                        <td>proteinas</td>
+                        <td>{{i.detalhes.proteinas}}g</td>
+                      </tr>
+                      <tr>
+                        <td>gorduras</td>
+                        <td>{{i.detalhes.gorduras}}g</td>
+                      </tr>
+                      <tr>
+                        <td>fibra_alimentar</td>
+                        <td>{{i.detalhes.fibra_alimentar}}g</td>
+                      </tr>
+                      <tr>
+                        <td>sodio</td>
+                        <td>{{i.detalhes.sodio}}g</td>
+                      </tr>
+                      <tr>
+                        <td>acucares</td>
+                        <td>{{i.detalhes.acucares}}g</td>
+                      </tr>
+                      <tr>
+                        <td>colesterol</td>
+                        <td>{{i.detalhes.colesterol}}g</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  @keyframes open-tab {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes close-tab {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  .open-tab-anim {
+    animation: open-tab 0.5s linear;
+    animation-play-state: initial;
+  }
+
+  .close-tab-anim {
+    animation: close-tab 0.5s linear;
+    animation-play-state: initial;
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 0px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(128, 128, 128, 0.605);
+    border-radius: 15px;
+  }
+</style>
+
+<script>
+  const element = document.getElementById("menu_tab");
+  element.addEventListener("animationstart", listener, false);
+  element.addEventListener("animationend", listener, false);
+  element.addEventListener("animationiteration", listener, false);
+
+  function openPratoDesc(prato) {
+    div = document.getElementById(`modal_prato_${prato}`);
+    div.classList.remove("hidden");
+  }
+  function closePratoDesc(prato) {
+    div = document.getElementById(`modal_prato_${prato}`);
+    div.classList.add("hidden");
+  }
+  function openMenu() {
+    div = document.getElementById(`menu_lateral`);
+    div_tab = document.getElementById(`menu_tab`);
+    div.classList.remove("hidden");
+    div_tab.classList.add("open-tab-anim");
+  }
+  function closeMenu() {
+    div = document.getElementById(`menu_lateral`);
+    div_tab = document.getElementById(`menu_tab`);
+    div_tab.classList.add("close-tab-anim");
+  }
+  function removeFilter(tipo){
+    const urlParams = new URLSearchParams(window.location.search);
+    let params = urlParams.get('tipo').split(',')
+    if(Array.isArray(params)){
+        params = params.filter(res => { if(res != tipo){return res}})
+        urlParams.set('tipo', params); 
+    }else{
+        urlParams.delete('tipo');
+    }
+    document.location.search = urlParams;
+  }
+  function addFilterInQuery(tipo){
+    const urlParams = new URLSearchParams(window.location.search);
+    let params = urlParams.get('tipo')
+    if(params){
+        params = params.split(',')
+        if(Array.isArray(params)){
+            urlParams.set('tipo', [...params, tipo]);
+        }else{
+            urlParams.set('tipo', [params,tipo]);
+        } 
+    }else{
+        urlParams.set('tipo', [tipo]);
+    }
+    document.location.search = urlParams;
+  }
+  function listener(event) {
+    switch (event.type) {
+      case "animationend":
+        div = document.getElementById(event.srcElement.id);
+        div.classList.remove(event.srcElement.classList[event.srcElement.classList.length - 1])
+        if(event.animationName == "close-tab"){
+            div = document.getElementById(`menu_lateral`);
+            div.classList.add("hidden");
+        }
+        break;
+    }
+  }
+</script>
