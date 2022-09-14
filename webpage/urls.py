@@ -16,7 +16,7 @@ urlpatterns = [
     path('registrar_mesa/', views.registrar_mesa, name="registrar_mesa"),
     path('delete_order/<str:pk>/', views.deletar_pedido, name="delete_order"),
     # path('api/', include((router.urls, 'app_name'))),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
