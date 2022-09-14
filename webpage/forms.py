@@ -1,6 +1,24 @@
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django import forms
 
-class Login(forms.Form):
-    email = forms.CharField(label='Email de acesso', max_length=100, widget=forms.TextInput(attrs={'class':'rounded border px-2'}))
-    password = forms.CharField(label='Senha de acesso', max_length=100, widget=forms.PasswordInput(attrs={'class':'rounded border px-2'}))
-    
+
+
+from .models import Mesa, Pedido
+
+
+class OrderForm(ModelForm):
+	class Meta:
+		model = Pedido
+		fields = '__all__'
+
+class MesaForm(ModelForm):
+	class Meta:
+		model = Mesa
+		fields = '__all__'
+
+class CreateUserForm(UserCreationForm):
+	class Meta:
+		model = User
+		fields = ['username', 'email', 'password1', 'password2']

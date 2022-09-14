@@ -1,5 +1,5 @@
 from secrets import choice
-from tkinter import CASCADE
+from django.db.models.deletion import CASCADE
 from django.db import models
 from django.contrib import admin
 from django import forms
@@ -22,6 +22,8 @@ class Mesa(models.Model):
     numero = models.IntegerField(max_length=3)
     quantidade = models.IntegerField(max_length=2, blank=True, null=True, default=0)
     garcon_responsavel = models.ForeignKey(Garcon, on_delete=models.CASCADE, blank=True, null=True, default=None)
+    def __str__(self):
+        return str(self.numero)
 
 class Ingrediente(models.Model):
     nome = models.CharField(max_length=350)
