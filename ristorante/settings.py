@@ -88,24 +88,20 @@ WSGI_APPLICATION = 'ristorante.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-if load_dotenv('ENVIROMENT') == 'local':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dehadjm5ia6vkq', # database name
+        'USER': 'umhkuydfmjcodt',
+        'PASSWORD': 'f3f7d891a5d782f6d127b8159f579f320ebd328f9e1fc3a6ed35dc5b8d71811d',
+        'HOST': 'ec2-3-93-206-109.compute-1.amazonaws.com',
+        'PORT': '5432',
+        # 'OPTIONS': {
+        #     'service': 'my_service',
+        #     'passfile': '.my_pgpass',
+        # },
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'projeto_ristoran',
-            'USER': 'root_ristorante',
-            'PASSWORD': 'ristorante123456',
-            'HOST': 'db4free.net',
-            'PORT': '3306'
-        }
-    }
+}
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
