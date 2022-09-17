@@ -58,7 +58,7 @@ def index(request):
             'ingredientes': ingredientesArray,
             'has_estoque': has_estoque,
         })
-		  
+
     context = {
         'pratos': pratos,
         'tipos': tipos,
@@ -74,6 +74,7 @@ def trataDados(dado, tipo):
         dado = str(f"{dado:,.2f}") + \
             f" {tipo}" if dado < 1000 else str(f"{dado/1000:,.2f}")+f" k{tipo}"
     return dado
+
 
 def loginPage(request):
     if request.user.is_authenticated:
@@ -101,19 +102,24 @@ def logoutUser(request):
 
 
 @login_required(login_url='login')
+
 def home(request):
-	current_garcon = Garcon.objects.get(user=request.user)
-	orders = Pedido.objects.filter(garcon =current_garcon)
-	customers = Mesa.objects.filter(garcon_responsavel =current_garcon)
-	total_orders = orders.count()
-	delivered = orders.filter(status='Pronto').count()
-	pending = orders.filter(status='Fazendo').count() + orders.filter(status='Pedido').count()
+    current_garcon = Garcon.objects.get(user=request.user)
+    orders = Pedido.objects.filter(garcon=current_garcon)
+    customers = Mesa.objects.filter(garcon_responsavel=current_garcon)
+    total_orders = orders.count()
+    delivered = orders.filter(status='Pronto').count()
+    pending = orders.filter(status='Fazendo').count() + \
+	                        orders.filter(status='Pedido').count()
 
-	context = {'orders':orders, 'customers':customers,
-	'total_orders':total_orders,'delivered':delivered,
-	'pending':pending,'current_garcon':current_garcon }
+    context = {'orders': orders, 'customers': customers,
+	'total_orders': total_orders, 'delivered': delivered,
+    'pending': pending, 'current_garcon': current_garcon}
+    return render(request, 'webpage/funcionario/dashboard.html', context)
+ 
+    
 
-
+    
 @login_required(login_url='login')
 def numero_mesa(request, pk_test):
     customer = Mesa.objects.get(id=pk_test)
