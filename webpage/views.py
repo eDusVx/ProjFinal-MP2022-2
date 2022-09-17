@@ -104,9 +104,15 @@ def logoutUser(request):
 @login_required(login_url='login')
 
 def home(request):
+    print( )
+    if request.user.is_superuser:
+        orders = Pedido.objects.all()
+        customers = Mesa.objects.all()
+    else:
+        orders = Pedido.objects.filter(garcon=current_garcon)
+        customers = Mesa.objects.filter(garcon_responsavel=current_garcon)
+    
     current_garcon = Garcon.objects.get(user=request.user)
-    orders = Pedido.objects.filter(garcon=current_garcon)
-    customers = Mesa.objects.filter(garcon_responsavel=current_garcon)
     total_orders = orders.count()
     delivered = orders.filter(status='Pronto').count()
     pending = orders.filter(status='Fazendo').count() + \
@@ -117,13 +123,13 @@ def home(request):
     'pending': pending, 'current_garcon': current_garcon}
     return render(request, 'webpage/funcionario/dashboard.html', context)
  
-    
-
+@login_required(login_url='login')
+def registrar_pedido(request):
+    return
     
 @login_required(login_url='login')
 def numero_mesa(request, pk_test):
     customer = Mesa.objects.get(id=pk_test)
-
     orders = customer.pedido_set.all()
     order_count = orders.count()
     delivered = orders.filter(status='Pronto').count()
@@ -136,16 +142,23 @@ def numero_mesa(request, pk_test):
 
 @login_required(login_url='login')
 def atualizar_pedido(request, pk):
-	current_garcon = Garcon.objects.get(user=request.user)
-	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
-	order = Pedido.objects.get(id=pk)
-	form = PedidoForm(instance=order)
 
-	if request.method == 'POST':
-		form = PedidoForm(request.POST, instance=order)
-		if form.is_valid():
-			form.save()
-			return redirect(f'/mesa/{current_mesa}/')
+    if request.user.is_superuser:
+        current_garcon = Garcon.objects.all()
+        current_mesa = Mesa.objects.all()
+    else:
+        current_garcon = Garcon.objects.get(user=request.user) 
+        current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
+        
+    order = Pedido.objects.get(id=pk)    
+    form = PedidoForm(instance=order)
+	
+    if request.method == 'POST':
+    
+        form = PedidoForm(request.POST, instance=order)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/mesa/{current_mesa}/')
 
 
 @login_required(login_url='login')
