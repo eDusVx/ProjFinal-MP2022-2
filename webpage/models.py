@@ -1,17 +1,20 @@
 from secrets import choice
 from django.db.models.deletion import CASCADE
+from django.contrib.auth.models import User
 from django.db import models
 from django.contrib import admin
 from django import forms
 from datetime import datetime, timezone
 from djmoney.models.fields import MoneyField
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 CHOICES = [("Pedido","Pedido"), ("Fazendo","Fazendo"), ("Pronto","Pronto")]
 TIPO_PRATO = [("Entrada","Entrada"),("Executivo","Executivo"),("Carne","Carne"),("Peixe","Peixe"),("Frango","Frango"),("Massa","Massa"),("Vegano/Vegetariano","Vegano/Vegetariano"),("Bebidas","Bebidas"),("Sobremesa","Sobremesa")]
 class Garcon(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default = 1)
     nome_completo = models.CharField(max_length=350)
     email = models.CharField(unique=True,max_length=150,default="default@email.com")
     password = models.CharField(max_length=150,default="admin123456")
