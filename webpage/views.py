@@ -5,11 +5,8 @@ from datetime import datetime, date, timezone
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
-from django.forms import inlineformset_factory
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-from .forms import OrderForm, CreateUserForm, MesaForm
-from .filters import OrderFilter
+from .forms import CreateUserForm, MesaForm, PedidoForm
 
 def index(request):
     tipos = []
@@ -56,10 +53,10 @@ def index(request):
             'ingredientes': ingredientesArray,
             'has_estoque': has_estoque,
         })
-        
+		  
     context = {
         'pratos': pratos,
-        'tipos': tipos
+        'tipos': tipos,
     }
     return render(request, 'webpage/index.html', context)
 
@@ -70,25 +67,6 @@ def trataDados(dado,tipo):
     else:
         dado = str(dado)+f" {tipo}" if dado < 1000 else str(dado/1000)+f" k{tipo}"
     return dado
-
-
-def registerPage(request):
-	if request.user.is_authenticated:
-		return redirect('home')
-	else:
-		form = CreateUserForm()
-		if request.method == 'POST':
-			form = CreateUserForm(request.POST)
-			if form.is_valid():
-				form.save()
-				user = form.cleaned_data.get('username')
-				messages.success(request, 'Account was created for ' + user)
-
-				return redirect('login')
-			
-
-		context = {'form':form}
-		return render(request, 'webpage/funcionario/register.html', context)
 
 def loginPage(request):
 	if request.user.is_authenticated:
@@ -116,18 +94,16 @@ def logoutUser(request):
 
 @login_required(login_url='login')
 def home(request):
-	orders = Pedido.objects.all()
-	customers = Mesa.objects.all()
-
-	total_customers = customers.count()
-
+	current_garcon = Garcon.objects.get(user=request.user)
+	orders = Pedido.objects.filter(garcon =current_garcon)
+	customers = Mesa.objects.filter(garcon_responsavel =current_garcon)
 	total_orders = orders.count()
 	delivered = orders.filter(status='Pronto').count()
 	pending = orders.filter(status='Fazendo').count() + orders.filter(status='Pedido').count()
 
 	context = {'orders':orders, 'customers':customers,
 	'total_orders':total_orders,'delivered':delivered,
-	'pending':pending }
+	'pending':pending,'current_garcon':current_garcon }
 
 	return render(request, 'webpage/funcionario/dashboard.html', context)
 
@@ -144,39 +120,37 @@ def numero_mesa(request, pk_test):
 	return render(request, 'webpage/funcionario/customer.html',context)
 
 @login_required(login_url='login')
-
-def registrar_mesa(request):
-	form = MesaForm()
-	if request.method == 'POST':
-		form = MesaForm(request.POST)
-		if form.is_valid():
-			form.save()
-			return redirect('/funcionarios/')
-
-	context = {'form':form}
-	return render(request, 'webpage/funcionario/mesa_form.html', context)
-
-@login_required(login_url='login')
 def atualizar_pedido(request, pk):
-
+	current_garcon = Garcon.objects.get(user=request.user)
+	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
 	order = Pedido.objects.get(id=pk)
-	form = OrderForm(instance=order)
+	form = PedidoForm(instance=order)
 
 	if request.method == 'POST':
-		form = OrderForm(request.POST, instance=order)
+		form = PedidoForm(request.POST, instance=order)
 		if form.is_valid():
 			form.save()
-			return redirect('/funcionarios/')
+			return redirect(f'/mesa/{current_mesa}/')
 
 	context = {'form':form}
 	return render(request, 'webpage/funcionario/order_form.html', context)
 
 @login_required(login_url='login')
 def deletar_pedido(request, pk):
+	current_garcon = Garcon.objects.get(user=request.user)
+	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
 	order = Pedido.objects.get(id=pk)
 	if request.method == "POST":
 		order.delete()
-		return redirect('/funcionarios/')
+		return redirect(f'/mesa/{current_mesa}/')
 
 	context = {'item':order}
 	return render(request, 'webpage/funcionario/delete.html', context)
+
+@login_required(login_url='login')
+def fechar_pedido(request):
+	current_garcon = Garcon.objects.get(user=request.user)
+	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
+	pedido = Pedido.objects.filter(mesa= current_mesa)
+	context = {'item':pedido}
+	return render(request, 'webpage/funcionario/fechar_pedido.html', context)
