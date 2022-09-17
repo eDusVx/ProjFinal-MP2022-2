@@ -123,8 +123,9 @@ def home(request):
     'pending': pending, 'current_garcon': current_garcon}
     return render(request, 'webpage/funcionario/dashboard.html', context)
  
-    
-
+@login_required(login_url='login')
+def registrar_pedido(request):
+    return
     
 @login_required(login_url='login')
 def numero_mesa(request, pk_test):
@@ -141,16 +142,23 @@ def numero_mesa(request, pk_test):
 
 @login_required(login_url='login')
 def atualizar_pedido(request, pk):
-	current_garcon = Garcon.objects.get(user=request.user)
-	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
-	order = Pedido.objects.get(id=pk)
-	form = PedidoForm(instance=order)
 
-	if request.method == 'POST':
-		form = PedidoForm(request.POST, instance=order)
-		if form.is_valid():
-			form.save()
-			return redirect(f'/mesa/{current_mesa}/')
+    if request.user.is_superuser:
+        current_garcon = Garcon.objects.all()
+        current_mesa = Mesa.objects.all()
+    else:
+        current_garcon = Garcon.objects.get(user=request.user) 
+        current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
+        
+    order = Pedido.objects.get(id=pk)    
+    form = PedidoForm(instance=order)
+	
+    if request.method == 'POST':
+    
+        form = PedidoForm(request.POST, instance=order)
+        if form.is_valid():
+            form.save()
+            return redirect(f'/mesa/{current_mesa}/')
 
 
 @login_required(login_url='login')
