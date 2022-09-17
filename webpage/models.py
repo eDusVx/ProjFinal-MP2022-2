@@ -7,12 +7,14 @@ from django import forms
 from datetime import datetime, timezone
 from djmoney.models.fields import MoneyField
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 CHOICES = [("Pedido","Pedido"), ("Fazendo","Fazendo"), ("Pronto","Pronto")]
 TIPO_PRATO = [("Entrada","Entrada"),("Executivo","Executivo"),("Carne","Carne"),("Peixe","Peixe"),("Frango","Frango"),("Massa","Massa"),("Vegano/Vegetariano","Vegano/Vegetariano"),("Bebidas","Bebidas"),("Sobremesa","Sobremesa")]
 class Garcon(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,default = 1)
     nome_completo = models.CharField(max_length=350)
     user_id = models.ForeignKey(User,on_delete=models.CASCADE, blank=True, null=True, default=None)
     email = models.CharField(unique=True,max_length=150,default="default@email.com")
