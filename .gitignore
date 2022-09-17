@@ -2,3 +2,4 @@
 ristorante/__pycache__/*
 webpage/__pycache__/*
 theme/__pycache__/*
+*.pyc
