@@ -16,7 +16,6 @@ TIPO_PRATO = [("Entrada","Entrada"),("Executivo","Executivo"),("Carne","Carne"),
 class Garcon(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,default = 1)
     nome_completo = models.CharField(max_length=350)
-    user_id = models.ForeignKey(User,on_delete=models.CASCADE, blank=True, null=True, default=None)
     email = models.CharField(unique=True,max_length=150,default="default@email.com")
     password = models.CharField(max_length=150,default="admin123456")
     def __str__(self):
