@@ -1,0 +1,24 @@
+{%  extends 'webpage/funcionario/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row">
+	<div class="grid grid-cols-8 space-x-2 bg-white w-full">
+		{% for mesa in Mesas %}
+		<div class="card card-body d-flex flex-row justify-content-center {% if mesa.situacao == 'livre' %} cursor-pointer {% else %} cursor-not-allowed {% endif %}">
+			<span class="w-[20px] h-[25px] flex justify-center relative top-[19px] left-[44px]">{{mesa.Mesa}}</span>
+			<svg width="71" height="64" viewBox="0 0 71 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<ellipse cx="35.5" cy="32" rx="20.5" ry="19" fill="{% if mesa.situacao == 'livre' %} #79B06B  {% else %} #DF1F41 {% endif %}"/>
+				<path d="M11.975 32.5C11.975 35.5218 9.30199 37.975 6 37.975C2.69801 37.975 0.025 35.5218 0.025 32.5C0.025 29.4782 2.69801 27.025 6 27.025C9.30199 27.025 11.975 29.4782 11.975 32.5Z" fill="#D9D9D9" stroke="black" stroke-width="0.05"/>
+				<path d="M40.975 58.5C40.975 61.5218 38.302 63.975 35 63.975C31.698 63.975 29.025 61.5218 29.025 58.5C29.025 55.4782 31.698 53.025 35 53.025C38.302 53.025 40.975 55.4782 40.975 58.5Z" fill="#D9D9D9" stroke="black" stroke-width="0.05"/>
+				<path d="M70.975 32.5C70.975 35.5218 68.302 37.975 65 37.975C61.698 37.975 59.025 35.5218 59.025 32.5C59.025 29.4782 61.698 27.025 65 27.025C68.302 27.025 70.975 29.4782 70.975 32.5Z" fill="#D9D9D9" stroke="black" stroke-width="0.05"/>
+				<path d="M40.975 5.5C40.975 8.52176 38.302 10.975 35 10.975C31.698 10.975 29.025 8.52176 29.025 5.5C29.025 2.47824 31.698 0.025 35 0.025C38.302 0.025 40.975 2.47824 40.975 5.5Z" fill="#D9D9D9" stroke="black" stroke-width="0.05"/>
+			</svg>				
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+
+{% endblock %}

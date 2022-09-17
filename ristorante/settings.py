@@ -50,8 +50,8 @@ INSTALLED_APPS = [
 ]
 
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'Assets')
 MEDIA_URL = '/Assets/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "Assets")
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -149,7 +149,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/images/'
+# MEDIA_URL = '/images/'
 STATIC_ROOT = 'staticfiles'
 
 CLOUDINARY_STORAGE = {
