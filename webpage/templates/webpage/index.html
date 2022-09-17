@@ -11,7 +11,7 @@
   <body>
     <div class="w-[100vw] h-[100vh] bg-orange-300 flex items-center justify-center">
       <div
-        class="bg-orange-100 flex flex-col items-center justify-start w-[80%] h-[100%]"
+        class="bg-white flex flex-col items-center justify-start w-[80%] h-[100%]"
       >
         <div
           id="header"
@@ -122,6 +122,19 @@
             <div class="hidden"></div>
           </div>
         </div>
+        <!-- pratos em destaque
+        <div class="w-full flex flex-col justify-center items-center max-w-sm mx-auto my-8">
+          <h1 class="text-black justify-center font-bold ">Prato do dia</h1>
+          <div style="background-image: url(https://i.pinimg.com/736x/f9/65/0b/f9650beef1e6e92578525e7c8f97bc21.jpg"
+               class="bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"></div>
+          <div class="w-56 md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
+            <div class="py-2 text-center font-bold uppercase tracking-wide text-gray-800">Nome do prato</div>
+            <div class="flex items-center justify-between py-2 px-3 bg-white-400">
+              <h1 class="text-gray-800 font-bold ">Descrição do prato</h1>
+              <h1 class="text-green-800 font-bold ">$0.0</h1>
+            </div>
+          </div>
+        </div> -->
         <div id="content" class="w-full space-y-4 flex flex-col sm:px-8 pt-8 border-t">
             <div class="flex w-full space-x-2">
                 {% for tipo in tipos %}

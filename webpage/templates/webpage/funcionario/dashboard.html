@@ -21,12 +21,11 @@
 						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Ver</a></td>
 						<td>{{customer.numero}}</td>
 						<td>{{customer.garcon_responsavel}}</td>
-						<td><a class="btn btn-sm btn-danger" href="">Fechar conta</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'fechar_pedido' %}">Fechar conta</a></td>
 
 					</tr>
 				{% endfor %}
 			</table>
-			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'registrar_mesa' %}">Abrir mesa</a>
 		</div>
 	</div>
 
