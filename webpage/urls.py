@@ -15,6 +15,7 @@ urlpatterns = [
     path('update_order/<str:pk>/', views.atualizar_pedido, name="update_order"),
     path('registrar_mesa/', views.registrar_mesa, name="registrar_mesa"),
     path('delete_order/<str:pk>/', views.deletar_pedido, name="delete_order"),
+    path('set_table/', views.get_tables_to_set, name="set_table"),
     # path('api/', include((router.urls, 'app_name'))),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -1,5 +1,6 @@
 from secrets import choice
 from django.db.models.deletion import CASCADE
+from django.contrib.auth.models import User
 from django.db import models
 from django.contrib import admin
 from django import forms
@@ -13,6 +14,7 @@ CHOICES = [("Pedido","Pedido"), ("Fazendo","Fazendo"), ("Pronto","Pronto")]
 TIPO_PRATO = [("Entrada","Entrada"),("Executivo","Executivo"),("Carne","Carne"),("Peixe","Peixe"),("Frango","Frango"),("Massa","Massa"),("Vegano/Vegetariano","Vegano/Vegetariano"),("Bebidas","Bebidas"),("Sobremesa","Sobremesa")]
 class Garcon(models.Model):
     nome_completo = models.CharField(max_length=350)
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE, blank=True, null=True, default=None)
     email = models.CharField(unique=True,max_length=150,default="default@email.com")
     password = models.CharField(max_length=150,default="admin123456")
     def __str__(self):
