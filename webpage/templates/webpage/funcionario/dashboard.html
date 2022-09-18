@@ -4,49 +4,57 @@
 
 <br>
 
-<div class="row">
-	<div class="col-md-5">
+<div class="flex flex-col md:flex-row h-[80%] space-y-6 md:space-y-0 md:space-x-2 md:h-[80vh]">
+	<div class="w-full md:w-[50%] h-[50%] md:h-[60vh]">
 		<h5>Mesas:</h5>
 		<hr>
-		<div class="card card-body">
-			<table class="table table-sm">
-				<tr>
-					<th></th>
-					<th>Mesa</th>
-					<th>Garçom responsável</th>
-				</tr>
-
+		<div class="card h-full card-body">
+			<table class="table table-sm overflow-y-auto">
+				<thead>
+					<tr class="text-center">
+						{% comment %} <th></th> {% endcomment %}
+						<th>Mesa</th>
+						<th>Garçom responsável</th>
+						<th>Fechar conta</th>
+					</tr>
+				</thead>
+				<tbody>
 				{% for customer in customers %}
-					<tr>
-						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Ver</a></td>
-						<td>{{customer.numero}}</td>
+					<tr class="cursor-pointer hover:scale-[1.02] hover:font-bold text-center rounded" onclick="window.location='{% url 'customer' customer.id %}';">
+						{% comment %} <td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Ver</a></td> {% endcomment %}
+						<td>
+							<span class="bg-green-400 px-2 pb-1 rounded text-white">{{customer.numero}}</span>
+						</td>
 						<td>{{customer.garcon_responsavel}}</td>
-						<td><a class="btn btn-sm btn-danger" href="">Fechar conta</a></td>
-
+						<td><a class="btn btn-sm btn-danger" href="{% url 'fechar_pedido' %}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M4 7h11v2H4zm0 4h11v2H4zm0 4h7v2H4zm15.299-2.708-4.3 4.291-1.292-1.291-1.414 1.415 2.706 2.704 5.712-5.703z"></path></svg>						
+						</a></td>
 					</tr>
 				{% endfor %}
+				</tbody>
 			</table>
-			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'registrar_mesa' %}">Abrir mesa</a>
 		</div>
 	</div>
 
-	<div class="col-md-7">
+	<div class="w-full md:w-[50%] h-[50%] md:h-[60vh]">
 		<h5>Últimos pedidos</h5>
 		<hr>
-		<div class="card card-body">
+		<div class="card h-full card-body">
 			
-			<table class="table table-sm">
-				<tr>
-					<th>Produto</th>
-					<th>Garçom</th>
-					<th>Mesa</th>
-					<th>Status</th>
-					<th>Atualizar</th>
-					<th>Remover</th>
-				</tr>
-
+			<table class="table table-sm overflow-y-auto">
+				<thead>
+					<tr class="text-center">
+						<th>Produto</th>
+						<th>Garçom</th>
+						<th>Mesa</th>
+						<th>Status</th>
+						<th>Atualizar</th>
+						<th>Remover</th>
+					</tr>
+				</thead>
+				<tbody>
 				{% for order in orders %}
-					<tr>
+					<tr class="hover:scale-[1.02] hover:font-bold text-center rounded">
 						<td>{{order.pratos}}</td>
 						<td>{{order.garcon}}</td>
 						<td>{{order.mesa}}</td>
@@ -57,8 +65,7 @@
 
 					</tr>
 				{% endfor %}
-
-		
+				</tbody>
 			</table>
 		</div>
 	</div>

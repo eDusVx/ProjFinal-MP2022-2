@@ -39,7 +39,7 @@
           <div>
             <img
               class="w-[100px]"
-              src="https://i.pinimg.com/736x/f9/65/0b/f9650beef1e6e92578525e7c8f97bc21.jpg"
+              src="https://st4.depositphotos.com/23877174/25297/v/450/depositphotos_252976636-stock-illustration-restaurant-icon-vector-from-kitchen.jpg"
               alt="Logo"
             />
           </div>
@@ -122,14 +122,27 @@
             <div class="hidden"></div>
           </div>
         </div>
+        <!-- pratos em destaque
+        <div class="w-full flex flex-col justify-center items-center max-w-sm mx-auto my-8">
+          <h1 class="text-black justify-center font-bold ">Prato do dia</h1>
+          <div style="background-image: url(https://i.pinimg.com/736x/f9/65/0b/f9650beef1e6e92578525e7c8f97bc21.jpg"
+               class="bg-gray-300 h-64 w-full rounded-lg shadow-md bg-cover bg-center"></div>
+          <div class="w-56 md:w-64 bg-white -mt-10 shadow-lg rounded-lg overflow-hidden">
+            <div class="py-2 text-center font-bold uppercase tracking-wide text-gray-800">Nome do prato</div>
+            <div class="flex items-center justify-between py-2 px-3 bg-white-400">
+              <h1 class="text-gray-800 font-bold ">Descrição do prato</h1>
+              <h1 class="text-green-800 font-bold ">$0.0</h1>
+            </div>
+          </div>
+        </div> -->
         <div id="content" class="w-full space-y-4 flex flex-col sm:px-8 pt-8 border-t">
             <div class="flex w-full space-x-2">
                 {% for tipo in tipos %}
-                    <div class="max-w-[75px] px-2 rounded-full h-[25px] bg-red-50 flex items-center">
+                    <div class="max-w-[175px] px-2 rounded-full h-[25px] bg-red-50 flex items-center">
                         <span class="text-sm font-medium">{{tipo}}</span>
                         <svg
                             onclick="removeFilter('{{tipo}}')"
-                            class="cursor-pointer ml-2 w-[20%]"
+                            class="cursor-pointer ml-1 mt-[0.5px] w-[12px]"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -176,7 +189,7 @@
           </div>
           <div
             id="modal_prato_{{p.prato.id}}"
-            class="hidden bg-gray-50/75 absolute left-0 top-0 z-10 w-[98%] m-0 p-0 h-[98%] flex justify-center items-center"
+            class="hidden bg-gray-50/75 absolute left-0 -top-4 z-10 w-[100%] m-0 p-0 h-[100%] flex justify-center items-center"
           >
             <div
               class="bg-white w-[90%] lg:w-[50%] opacity-1 border z-20 overflow-y-hidden rounded h-[90%] lg:h-[50%]"
