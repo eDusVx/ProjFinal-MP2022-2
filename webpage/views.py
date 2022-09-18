@@ -104,15 +104,13 @@ def logoutUser(request):
 @login_required(login_url='login')
 
 def home(request):
-    print( )
+    current_garcon = Garcon.objects.get(user=request.user)
     if request.user.is_superuser:
         orders = Pedido.objects.all()
         customers = Mesa.objects.all()
     else:
         orders = Pedido.objects.filter(garcon=current_garcon)
         customers = Mesa.objects.filter(garcon_responsavel=current_garcon)
-    
-    current_garcon = Garcon.objects.get(user=request.user)
     total_orders = orders.count()
     delivered = orders.filter(status='Pronto').count()
     pending = orders.filter(status='Fazendo').count() + \
@@ -127,6 +125,25 @@ def home(request):
 def registrar_pedido(request):
     return
     
+    
+@login_required(login_url='login')
+def chose_table(request,pk=None):
+    Mesas = []
+    current_garcon = Garcon.objects.get(user=request.user)
+    mesasRaw = Mesa.objects.all()
+    if request.method == 'POST':
+        print("post")
+        print(pk)
+        
+    for mesa in mesasRaw:
+        Mesas.append({
+            "mesa": mesa,
+            "situacao": "ocupada" if mesa.garcon_responsavel else "livre",
+            "sua": True if mesa.garcon_responsavel == current_garcon else False
+        })
+    context = {'mesas': Mesas}
+    return render(request, 'webpage/funcionario/set_table.html', context)
+
 @login_required(login_url='login')
 def numero_mesa(request, pk_test):
     customer = Mesa.objects.get(id=pk_test)
