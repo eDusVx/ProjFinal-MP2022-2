@@ -6,7 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib import messages
-from .forms import CreateUserForm, MesaForm, PedidoForm
+from .forms import PedidoForm, PedidoHasPratoForm
+from django.forms import modelformset_factory, inlineformset_factory
+from django.http import HttpResponseRedirect
 
 
 def index(request):
@@ -134,36 +136,75 @@ def numero_mesa(request, pk_test):
     return render(request, 'webpage/funcionario/customer.html', context)
 
 
+
 @login_required(login_url='login')
 def atualizar_pedido(request, pk):
-	current_garcon = Garcon.objects.get(user=request.user)
-	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
-	order = Pedido.objects.get(id=pk)
-	form = PedidoForm(instance=order)
+    order = Pedido.objects.get(id=pk)
+    item_pedido_formset = inlineformset_factory(Pedido, pedido_has_prato, form=PedidoHasPratoForm,extra= 0, can_delete=False, min_num=1, validate_min=True)
 
-	if request.method == 'POST':
-		form = PedidoForm(request.POST, instance=order)
-		if form.is_valid():
-			form.save()
-			return redirect(f'/mesa/{current_mesa}/')
+    if request.method == 'POST':
+        forms = PedidoForm(request.POST, request.FILES, instance=order, prefix='main')
+        formset = item_pedido_formset(request.POST, request.FILES, instance=order, prefix='product')
+
+        if forms.is_valid() and formset.is_valid():
+            forms = forms.save(commit=False)
+            forms.save()
+            formset.save()
+            return redirect('home')
+
+    else:
+        forms = PedidoForm(instance=order, prefix='main')
+        formset = item_pedido_formset(instance=order, prefix='product')
+
+    context = {
+        'forms': forms,
+        'formset': formset,
+    }
+
+    return render(request, 'webpage/funcionario/pedido_form.html', context)
 
 
 @login_required(login_url='login')
 def deletar_pedido(request, pk):
-	current_garcon = Garcon.objects.get(user=request.user)
-	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
 	order = Pedido.objects.get(id=pk)
 	if request.method == "POST":
 		order.delete()
-		return redirect(f'/mesa/{current_mesa}/')
+		return redirect('home')
+        
 
 	context = {'item':order}
 	return render(request, 'webpage/funcionario/delete.html', context)
 
 @login_required(login_url='login')
-def fechar_pedido(request):
-	current_garcon = Garcon.objects.get(user=request.user)
-	current_mesa = Mesa.objects.get(garcon_responsavel =current_garcon)
-	pedido = Pedido.objects.filter(mesa= current_mesa)
-	context = {'item':pedido}
-	return render(request, 'webpage/funcionario/fechar_pedido.html', context)
+def registrar_pedido(request):
+    pedido_form = Pedido()
+    item_pedido_formset = inlineformset_factory(Pedido, pedido_has_prato, form=PedidoHasPratoForm,extra= 0, can_delete=False, min_num=1, validate_min=True)
+
+    if request.method == 'POST':
+        forms = PedidoForm(request.POST, request.FILES, instance=pedido_form, prefix='main')
+        formset = item_pedido_formset(request.POST, request.FILES, instance=pedido_form, prefix='product')
+
+        if forms.is_valid() and formset.is_valid():
+            forms = forms.save(commit=False)
+            forms.save()
+            formset.save()
+            return redirect('home')
+
+    else:
+        forms = PedidoForm(instance=pedido_form, prefix='main')
+        formset = item_pedido_formset(instance=pedido_form, prefix='product')
+
+    context = {
+        'forms': forms,
+        'formset': formset,
+    }
+
+    return render(request, 'webpage/funcionario/pedido_form.html', context)
+
+
+# @login_required(login_url='login')
+# def fechar_pedido(request,pk):
+#     order = Pedido.objects.get(id=pk)
+#     pedido = Pedido.objects.filter(instance=order)
+#     context = {'item':pedido}
+#     return render(request, 'webpage/funcionario/fechar_pedido.html', context)

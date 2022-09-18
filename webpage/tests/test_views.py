@@ -44,20 +44,25 @@ def test_nuemro_mesa(client):
     resp = client.get(logout_url)
     assert resp.status_code == 302
 
-# @pytest.mark.django_db
-# def test_atualizar_pedido(client):
-#     mesa = Mesa.objects.create(numero=1, quantidade = 3)
-#     pedido = Pedido.objects.create(numero=1, pratos = 'sahshajsha', mesa= mesa.id)
-#     temp_url = urls.reverse('update_order', args=[pedido.pk])
-#     resp = client.get(temp_url)
-#     assert resp.status_code == 302
+@pytest.mark.django_db
+def test_atualizar_pedido(client):
+    pedido = Pedido.objects.create(numero =1,mesa_id = 1,garcon_id = 1)
+    temp_url = urls.reverse('update_order', args=[pedido.pk])
+    resp = client.get(temp_url)
+    assert resp.status_code == 302
 
-# @pytest.mark.django_db
-# def test_deletar_pedido(client):
-#     mesa = Mesa.objects.create(numero=1, quantidade = 3)
-#     pedido = Pedido.objects.create(numero=1, pratos = 'sahshajsha', mesa =mesa.id)
-#     temp_url = urls.reverse('delete_order', args=[pedido.pk])
-#     resp = client.get(temp_url)
-#     assert resp.status_code == 302
+@pytest.mark.django_db
+def test_deletar_pedido(client):
+	pedido = Pedido.objects.create(numero =1,mesa_id = 1,garcon_id = 1)
+	temp_url = urls.reverse('delete_order', args=[pedido.pk])
+	resp = client.get(temp_url)
+	assert resp.status_code == 302
+
+@pytest.mark.django_db
+def test_registrar_pedido(client):
+	pedido = Pedido.objects.create(numero =1,mesa_id = 1,garcon_id = 1)
+	temp_url = urls.reverse('registrar_pedido')
+	resp = client.get(temp_url)
+	assert resp.status_code == 302
 
 

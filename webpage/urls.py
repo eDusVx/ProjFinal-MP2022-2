@@ -12,8 +12,8 @@ urlpatterns = [
     path('funcionarios/', views.home, name="home"),
     path('mesa/<str:pk_test>/', views.numero_mesa, name="customer"),
     path('update_order/<str:pk>/', views.atualizar_pedido, name="update_order"),
-    # path('registrar_pedido/', views.registrar_pedido, name="registrar_pedido"),
-    path('fechar_pedido/', views.fechar_pedido, name="fechar_pedido"),
+    path('registrar_pedido/', views.registrar_pedido, name="registrar_pedido"),
+    # path('fechar_pedido/', views.fechar_pedido, name="fechar_pedido"),
     path('delete_order/<str:pk>/', views.deletar_pedido, name="delete_order"),
     # path('api/', include((router.urls, 'app_name'))),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
