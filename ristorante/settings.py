@@ -15,6 +15,7 @@ import os
 from dotenv import load_dotenv
 import django_heroku
 import cloudinary_storage
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,18 +91,19 @@ WSGI_APPLICATION = 'ristorante.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dehadjm5ia6vkq', # database name
-        'USER': 'umhkuydfmjcodt',
-        'PASSWORD': 'f3f7d891a5d782f6d127b8159f579f320ebd328f9e1fc3a6ed35dc5b8d71811d',
-        'HOST': 'ec2-3-93-206-109.compute-1.amazonaws.com',
-        'PORT': '5432',
-        # 'OPTIONS': {
-        #     'service': 'my_service',
-        #     'passfile': '.my_pgpass',
-        # },
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'dehadjm5ia6vkq', # database name
+            'USER': 'umhkuydfmjcodt',
+            'PASSWORD': 'f3f7d891a5d782f6d127b8159f579f320ebd328f9e1fc3a6ed35dc5b8d71811d',
+            'HOST': 'ec2-3-93-206-109.compute-1.amazonaws.com',
+            'PORT': '5432',
+    'tests': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'yourdatabasename.db'),
+        }
     }
 }
 
