@@ -12,7 +12,7 @@
 	</div>
 	<div class="grid grid-cols-8 grid-rows-4 grid-rows-6 space-x-2 bg-white w-full">
 		{% for mesa in mesas %}
-		<div class=" m-4 d-flex flex-row justify-content-center {% if mesa.situacao == 'livre' %} cursor-pointer {% else %} cursor-not-allowed {% endif %}" {% if mesa.situacao == 'livre' %} onclick="window.location='{% url 'chose_table' mesa.mesa.id %}';" {% endif %} >
+		<div class=" m-4 d-flex flex-row justify-content-center {% if mesa.situacao == 'livre' %} cursor-pointer {% else %} cursor-not-allowed {% endif %}" {% if mesa.situacao == 'livre' %} onclick="window.location='{% url 'chose_table' mesa.mesa.numero %}';" {% endif %} >
 			<span class="w-[20px] h-[25px] flex justify-center text-white relative top-[16px] left-[44px]">{{mesa.mesa}}</span>
 			<svg width="70" height="75" viewBox="0 0 70 75" fill="none" xmlns="http://www.w3.org/2000/svg">
 				<line x1="33.05" y1="6" x2="33.05" y2="20" stroke="black" stroke-width="0.1"/>
