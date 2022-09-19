@@ -61,7 +61,7 @@ def test_deletar_pedido(client):
 @pytest.mark.django_db
 def test_registrar_pedido(client):
 	pedido = Pedido.objects.create(numero =1,mesa_id = 1,garcon_id = 1)
-	temp_url = urls.reverse('registrar_pedido')
+	temp_url = urls.reverse('registrar_pedido',args=[1])
 	resp = client.get(temp_url)
 	assert resp.status_code == 302
 
