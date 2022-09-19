@@ -142,7 +142,7 @@ def chose_table(request,pk=None):
     current_garcon = Garcon.objects.get(user=request.user)
     mesasRaw = Mesa.objects.all()
     if pk:
-        mesa = Mesa.objects.get(id=pk)
+        mesa = Mesa.objects.get(numero=pk)
         mesa.garcon_responsavel = current_garcon
         mesa.save()
         return redirect('customer',pk) 
@@ -235,7 +235,8 @@ def registrar_pedido(request,pk_mesa):
                 for ingrediente in prato.ingredientes.all():
                     quantidade_ingrediente = prato_has_ingrediente.objects.get(ingrediente=ingrediente, prato=prato)
                     quantidade_ingrediente = quantidade_ingrediente.quantidade
-                    estoque = Estoque.objects.get(ingrediente=ingrediente)
+                    estoque = Estoque.objects.filter(ingrediente=ingrediente)
+                    estoque = estoque[0]
                     estoque.quantidade = int(estoque.quantidade) - int(quantidade_ingrediente)
                     estoque.save()
         return redirect('customer',pk_mesa)
