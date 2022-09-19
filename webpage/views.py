@@ -1,4 +1,6 @@
 from posixpath import split
+import json
+from statistics import quantiles
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from datetime import datetime, date, timezone
@@ -51,15 +53,21 @@ def index(request):
                 }
             )
             estoque = Estoque.objects.filter(
-                ingrediente=ingrediente, quantidade__gte=quantidade_ingrediente, validade__gte=datetime.now()).values()
+                ingrediente=ingrediente.id, quantidade__gte=int(quantidade_ingrediente), validade__gte=datetime.now()).values()
             if not list(estoque):
                 has_estoque = False
-
-        pratos.append({
-            'prato': prato,
-            'ingredientes': ingredientesArray,
-            'has_estoque': has_estoque,
-        })
+        if prato.destaque:
+            pratos.insert(0,{
+                'prato': prato,
+                'ingredientes': ingredientesArray,
+                'has_estoque': has_estoque,
+            })
+        else:
+            pratos.append({
+                'prato': prato,
+                'ingredientes': ingredientesArray,
+                'has_estoque': has_estoque,
+            })
 
     context = {
         'pratos': pratos,
@@ -106,15 +114,13 @@ def logoutUser(request):
 @login_required(login_url='login')
 
 def home(request):
-    print( )
+    current_garcon = Garcon.objects.get(user=request.user)
     if request.user.is_superuser:
         orders = Pedido.objects.all()
-        customers = Mesa.objects.all()
+        customers = Mesa.objects.exclude(garcon_responsavel=None)
     else:
         orders = Pedido.objects.filter(garcon=current_garcon)
         customers = Mesa.objects.filter(garcon_responsavel=current_garcon)
-    
-    current_garcon = Garcon.objects.get(user=request.user)
     total_orders = orders.count()
     delivered = orders.filter(status='Pronto').count()
     pending = orders.filter(status='Fazendo').count() + \
@@ -129,9 +135,29 @@ def home(request):
 def registrar_pedido(request):
     return
     
+    
+@login_required(login_url='login')
+def chose_table(request,pk=None):
+    Mesas = []
+    current_garcon = Garcon.objects.get(user=request.user)
+    mesasRaw = Mesa.objects.all()
+    if pk:
+        mesa = Mesa.objects.get(id=pk)
+        mesa.garcon_responsavel = current_garcon
+        mesa.save()
+        return redirect('customer',pk) 
+    for mesa in mesasRaw:
+        Mesas.append({
+            "mesa": mesa,
+            "situacao": "ocupada" if mesa.garcon_responsavel else "livre",
+            "sua": True if mesa.garcon_responsavel == current_garcon else False
+        })
+    context = {'mesas': Mesas}
+    return render(request, 'webpage/funcionario/set_table.html', context)
+
 @login_required(login_url='login')
 def numero_mesa(request, pk_test):
-    customer = Mesa.objects.get(id=pk_test)
+    customer = Mesa.objects.get(numero=pk_test)
     orders = customer.pedido_set.all()
     order_count = orders.count()
     delivered = orders.filter(status='Pronto').count()
@@ -190,35 +216,88 @@ def deletar_pedido(request, pk):
 	return render(request, 'webpage/funcionario/delete.html', context)
 
 @login_required(login_url='login')
-def registrar_pedido(request):
-    pedido_form = Pedido()
-    item_pedido_formset = inlineformset_factory(Pedido, pedido_has_prato, form=PedidoHasPratoForm,extra= 0, can_delete=False, min_num=1, validate_min=True)
-
+def registrar_pedido(request,pk_mesa):
+    pratos = Prato.objects.all()
+    mesa = Mesa.objects.get(numero=pk_mesa)
+    p = []
     if request.method == 'POST':
-        forms = PedidoForm(request.POST, request.FILES, instance=pedido_form, prefix='main')
-        formset = item_pedido_formset(request.POST, request.FILES, instance=pedido_form, prefix='product')
-
-        if forms.is_valid() and formset.is_valid():
-            forms = forms.save(commit=False)
-            forms.save()
-            formset.save()
-            return redirect('home')
-
-    else:
-        forms = PedidoForm(instance=pedido_form, prefix='main')
-        formset = item_pedido_formset(instance=pedido_form, prefix='product')
+        current_garcon = Garcon.objects.get(user=request.user)
+        last_pedido = Pedido.objects.last()
+        numero = int(last_pedido.numero) + 1
+        pedido = Pedido(numero=numero,garcon=current_garcon,mesa=mesa)
+        pedido.save()
+        for idx,item in enumerate(request.POST.items()):
+            if idx > 0 and int(item[1][0]) > 0:
+                prato = Prato.objects.get(id=item[0])
+                quantidade = item[1][0]
+                pedido_prato = pedido_has_prato(prato=prato,quantidade=quantidade,pedido=pedido)
+                pedido_prato.save()
+                for ingrediente in prato.ingredientes.all():
+                    quantidade_ingrediente = prato_has_ingrediente.objects.get(ingrediente=ingrediente, prato=prato)
+                    quantidade_ingrediente = quantidade_ingrediente.quantidade
+                    estoque = Estoque.objects.get(ingrediente=ingrediente)
+                    estoque.quantidade = int(estoque.quantidade) - int(quantidade_ingrediente)
+                    estoque.save()
+        return redirect('customer',pk_mesa)
+    
+    for prato in pratos:
+        ingredientes = prato.ingredientes.all()
+        has_estoque = True
+        for ingrediente in ingredientes:
+            quantidade_ingrediente = prato_has_ingrediente.objects.get(
+                ingrediente=ingrediente, prato=prato)
+            quantidade_ingrediente = quantidade_ingrediente.quantidade
+            estoque = Estoque.objects.filter(
+                    ingrediente=ingrediente, quantidade__gte=quantidade_ingrediente, validade__gte=datetime.now()).values()
+            if not list(estoque):
+                has_estoque = False
+        p.append({
+            "prato": prato,
+            'has_estoque': has_estoque
+        })
 
     context = {
-        'forms': forms,
-        'formset': formset,
+        'pratos': p
     }
 
     return render(request, 'webpage/funcionario/pedido_form.html', context)
 
 
-# @login_required(login_url='login')
-# def fechar_pedido(request,pk):
-#     order = Pedido.objects.get(id=pk)
-#     pedido = Pedido.objects.filter(instance=order)
-#     context = {'item':pedido}
-#     return render(request, 'webpage/funcionario/fechar_pedido.html', context)
+@login_required(login_url='login')
+def fechar_pedido(request,pk):
+    mesa = Mesa.objects.get(id=pk)
+    pedidos = Pedido.objects.filter(mesa=mesa)
+    conta = 0
+    items = []
+    if request.method == 'POST':
+        print(pedidos)
+        for pedidoRaw in pedidos:
+            print(pedidoRaw)
+            pedido = Pedido.objects.get(id=pedidoRaw.id)
+            pedido.status = 'fechado'
+            pedido.mesa = None
+            pedido.save()
+            print(pedido.status)
+        mesa.garcon_responsavel = None
+        mesa.save()
+        return redirect('home')
+            
+    for pedido in pedidos:
+        pratos_in_pedido = pedido_has_prato.objects.filter(pedido=pedido)
+        for obj in pratos_in_pedido:
+            conta += obj.prato.preco*obj.quantidade
+            items.append({
+                'prato': obj.prato,
+                'quantidade': obj.quantidade,
+                'valor': obj.prato.preco,
+                'valor_total': obj.prato.preco*obj.quantidade
+            })
+    context = {
+        'Mesa': mesa,
+        'items':items,
+        'valorTotal': conta,
+        'dez_porcento': conta*0.1,
+        'conta': conta+conta*0.1,
+        
+    }
+    return render(request, 'webpage/funcionario/fechar_pedido.html', context)
