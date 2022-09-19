@@ -3,8 +3,10 @@
 {% block content %}
 
 <br>
+<button class="btn btn-primary my-4" onclick="window.location='{% url 'chose_table' %}';">Atender Mesa</button>
 
 <div class="flex flex-col md:flex-row h-[80%] space-y-6 md:space-y-0 md:space-x-2 md:h-[80vh]">
+	
 	<div class="w-full md:w-[50%] h-[50%] md:h-[60vh]">
 		<h5>Mesas:</h5>
 		<hr>
@@ -20,13 +22,13 @@
 				</thead>
 				<tbody>
 				{% for customer in customers %}
-					<tr class="cursor-pointer hover:scale-[1.02] hover:font-bold text-center rounded" onclick="window.location='{% url 'customer' customer.id %}';">
+					<tr class="cursor-pointer hover:scale-[1.02] hover:font-bold text-center rounded" onclick="window.location='{% url 'customer' customer.numero %}';">
 						{% comment %} <td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Ver</a></td> {% endcomment %}
 						<td>
 							<span class="bg-green-400 px-2 pb-1 rounded text-white">{{customer.numero}}</span>
 						</td>
 						<td>{{customer.garcon_responsavel}}</td>
-						<td><a class="btn btn-sm btn-danger" href="{% url 'fechar_pedido' %}">
+						<td><a class="btn btn-sm btn-danger" href="{% url 'fechar_pedido' customer.id %}">
 							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M4 7h11v2H4zm0 4h11v2H4zm0 4h7v2H4zm15.299-2.708-4.3 4.291-1.292-1.291-1.414 1.415 2.706 2.704 5.712-5.703z"></path></svg>						
 						</a></td>
 					</tr>
