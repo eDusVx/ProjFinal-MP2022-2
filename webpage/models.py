@@ -48,6 +48,7 @@ class Prato(models.Model):
     preco = MoneyField(max_digits=14, decimal_places=2, default_currency='BRL')
     tipo = models.CharField(max_length=100, choices=TIPO_PRATO, default=None)
     ingredientes = models.ManyToManyField(Ingrediente, through='prato_has_ingrediente')
+    destaque = models.BooleanField(default=False)
     def __str__(self):
         return self.nome.upper()
     
@@ -55,7 +56,7 @@ class Pedido(models.Model):
     numero = models.IntegerField(max_length=1000)
     pratos = models.TextField()
     garcon = models.ForeignKey(Garcon, on_delete=models.CASCADE, default=0)
-    mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE)
+    mesa = models.ForeignKey(Mesa, on_delete=models.CASCADE, null=True, default=None)
     prato = models.ManyToManyField(Prato, through='pedido_has_prato')    
     status = models.CharField(max_length=100, choices=CHOICES, default="Pedido")
 
@@ -73,6 +74,8 @@ class Estoque(models.Model):
     ingrediente = models.ForeignKey(Ingrediente, on_delete=models.CASCADE)
     quantidade = models.IntegerField(max_length=3)
     validade = models.DateField(default=datetime.now())
+    def __str__(self):
+        return self.ingrediente.nome
     
 class pedido_has_prato_inline(admin.TabularInline):
     model = pedido_has_prato
