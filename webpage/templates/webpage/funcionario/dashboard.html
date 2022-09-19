@@ -10,8 +10,8 @@
 	<div class="w-full md:w-[50%] h-[50%] md:h-[60vh]">
 		<h5>Mesas:</h5>
 		<hr>
-		<div class="card h-full card-body">
-			<table class="table table-sm overflow-y-auto">
+		<div class="card h-full card-body overflow-y-auto">
+			<table class="table table-sm ">
 				<thead>
 					<tr class="text-center">
 						{% comment %} <th></th> {% endcomment %}
@@ -41,27 +41,25 @@
 	<div class="w-full md:w-[50%] h-[50%] md:h-[60vh]">
 		<h5>Últimos pedidos</h5>
 		<hr>
-		<div class="card h-full card-body">
+		<div class="card h-full card-body overflow-y-auto">
 			
-			<table class="table table-sm overflow-y-auto">
+			<table class="table table-sm">
 				<thead>
 					<tr class="text-center">
 						<th>Produto</th>
 						<th>Garçom</th>
 						<th>Mesa</th>
 						<th>Status</th>
-						<th>Atualizar</th>
 						<th>Remover</th>
 					</tr>
 				</thead>
 				<tbody>
 				{% for order in orders %}
 					<tr class="hover:scale-[1.02] hover:font-bold text-center rounded">
-						<td>{{order.pratos}}</td>
+						<td>{{order.numero}}</td>
 						<td>{{order.garcon}}</td>
 						<td>{{order.mesa}}</td>
 						<td>{{order.status}}</td>
-						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
 
 						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
 
