@@ -1,0 +1,158 @@
+\hypertarget{namespacewebpage_1_1views}{}\doxysection{webpage.\+views Namespace Reference}
+\label{namespacewebpage_1_1views}\index{webpage.views@{webpage.views}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_a3557bb5046c0a6fc0b72def017f9d05b}{index}} (request)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_aa6249a1b84fad27ad3ef80562ba423f5}{trata\+Dados}} (dado, tipo)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_a52d24c9a87fc7add479eed343a20c11d}{login\+Page}} (request)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_acf77ec9f4aad38fc3e881d1db2fdb3d3}{logout\+User}} (request)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_a591378e708fa7679d5db6c58b285f34c}{home}} (request)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_aedbd2f70860ecfbee188457230dd211d}{registrar\+\_\+pedido}} (request)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_a0ffdb360f4bd844baf1357699d278d35}{chose\+\_\+table}} (request, pk=None)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_aa52607f80fa46905337bcd329b182717}{numero\+\_\+mesa}} (request, pk\+\_\+test)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_af5bcab824ddfd206701a3627acd19166}{atualizar\+\_\+pedido}} (request, pk)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_a8678cc0e7119096156dee2ddcfb13b1e}{deletar\+\_\+pedido}} (request, pk)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_ab68896f46b890de38df0d33bd5aeeeb4}{registrar\+\_\+pedido}} (request, pk\+\_\+mesa)
+\item 
+def \mbox{\hyperlink{namespacewebpage_1_1views_a6e8bc2dc5e895f92e3d60c019091aaa2}{fechar\+\_\+pedido}} (request, pk)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacewebpage_1_1views_af5bcab824ddfd206701a3627acd19166}\label{namespacewebpage_1_1views_af5bcab824ddfd206701a3627acd19166}} 
+\index{webpage.views@{webpage.views}!atualizar\_pedido@{atualizar\_pedido}}
+\index{atualizar\_pedido@{atualizar\_pedido}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{atualizar\_pedido()}{atualizar\_pedido()}}
+{\footnotesize\ttfamily def webpage.\+views.\+atualizar\+\_\+pedido (\begin{DoxyParamCaption}\item[{}]{request,  }\item[{}]{pk }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Atualiza a situação atual do pedido
+
+:RECEBE:
+:request: class django.core.handlers.wsgi.WSGIRequest - Requisiçao para a pagina atualizar o pedido
+:pk: chave - Chave primária do pedido
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_a0ffdb360f4bd844baf1357699d278d35}\label{namespacewebpage_1_1views_a0ffdb360f4bd844baf1357699d278d35}} 
+\index{webpage.views@{webpage.views}!chose\_table@{chose\_table}}
+\index{chose\_table@{chose\_table}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{chose\_table()}{chose\_table()}}
+{\footnotesize\ttfamily def webpage.\+views.\+chose\+\_\+table (\begin{DoxyParamCaption}\item[{}]{request,  }\item[{}]{pk = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Seleciona uma das mesas disponíveis e altera a situação atual da mesa
+
+:RECEBE:
+:request: class django.core.handlers.wsgi.WSGIRequest - Requisicao para pagina de escolher uma mesa
+:pk: chave - Chave primaria da mesa
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_a8678cc0e7119096156dee2ddcfb13b1e}\label{namespacewebpage_1_1views_a8678cc0e7119096156dee2ddcfb13b1e}} 
+\index{webpage.views@{webpage.views}!deletar\_pedido@{deletar\_pedido}}
+\index{deletar\_pedido@{deletar\_pedido}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{deletar\_pedido()}{deletar\_pedido()}}
+{\footnotesize\ttfamily def webpage.\+views.\+deletar\+\_\+pedido (\begin{DoxyParamCaption}\item[{}]{request,  }\item[{}]{pk }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacewebpage_1_1views_a6e8bc2dc5e895f92e3d60c019091aaa2}\label{namespacewebpage_1_1views_a6e8bc2dc5e895f92e3d60c019091aaa2}} 
+\index{webpage.views@{webpage.views}!fechar\_pedido@{fechar\_pedido}}
+\index{fechar\_pedido@{fechar\_pedido}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{fechar\_pedido()}{fechar\_pedido()}}
+{\footnotesize\ttfamily def webpage.\+views.\+fechar\+\_\+pedido (\begin{DoxyParamCaption}\item[{}]{request,  }\item[{}]{pk }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Fecha o pedido
+
+:RECEBE:
+:request: Requisicao da pagina de fechar o pedido
+:pk: Chave primaria do pedido\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_a591378e708fa7679d5db6c58b285f34c}\label{namespacewebpage_1_1views_a591378e708fa7679d5db6c58b285f34c}} 
+\index{webpage.views@{webpage.views}!home@{home}}
+\index{home@{home}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{home()}{home()}}
+{\footnotesize\ttfamily def webpage.\+views.\+home (\begin{DoxyParamCaption}\item[{}]{request }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Responsavel pela webpage home dos funcionarios
+
+:request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso a pagina Home
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_a3557bb5046c0a6fc0b72def017f9d05b}\label{namespacewebpage_1_1views_a3557bb5046c0a6fc0b72def017f9d05b}} 
+\index{webpage.views@{webpage.views}!index@{index}}
+\index{index@{index}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{index()}{index()}}
+{\footnotesize\ttfamily def webpage.\+views.\+index (\begin{DoxyParamCaption}\item[{}]{request }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Funcao responsavel gerar a pagina inicial
+
+RECEBE:
+:request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso para a pagina
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_a52d24c9a87fc7add479eed343a20c11d}\label{namespacewebpage_1_1views_a52d24c9a87fc7add479eed343a20c11d}} 
+\index{webpage.views@{webpage.views}!loginPage@{loginPage}}
+\index{loginPage@{loginPage}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{loginPage()}{loginPage()}}
+{\footnotesize\ttfamily def webpage.\+views.\+login\+Page (\begin{DoxyParamCaption}\item[{}]{request }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Responsavel por autenticar os dados de usuario e retornar ou nao a pagina de login
+
+:RECEBE:
+:request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso a pagina de usuario autenticacado
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_acf77ec9f4aad38fc3e881d1db2fdb3d3}\label{namespacewebpage_1_1views_acf77ec9f4aad38fc3e881d1db2fdb3d3}} 
+\index{webpage.views@{webpage.views}!logoutUser@{logoutUser}}
+\index{logoutUser@{logoutUser}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{logoutUser()}{logoutUser()}}
+{\footnotesize\ttfamily def webpage.\+views.\+logout\+User (\begin{DoxyParamCaption}\item[{}]{request }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Responsavel pelo logout de usuario autenticado
+
+:RECEBE:
+:request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso a pagina de login\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_aa52607f80fa46905337bcd329b182717}\label{namespacewebpage_1_1views_aa52607f80fa46905337bcd329b182717}} 
+\index{webpage.views@{webpage.views}!numero\_mesa@{numero\_mesa}}
+\index{numero\_mesa@{numero\_mesa}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{numero\_mesa()}{numero\_mesa()}}
+{\footnotesize\ttfamily def webpage.\+views.\+numero\+\_\+mesa (\begin{DoxyParamCaption}\item[{}]{request,  }\item[{}]{pk\+\_\+test }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacewebpage_1_1views_aedbd2f70860ecfbee188457230dd211d}\label{namespacewebpage_1_1views_aedbd2f70860ecfbee188457230dd211d}} 
+\index{webpage.views@{webpage.views}!registrar\_pedido@{registrar\_pedido}}
+\index{registrar\_pedido@{registrar\_pedido}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{registrar\_pedido()}{registrar\_pedido()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily def webpage.\+views.\+registrar\+\_\+pedido (\begin{DoxyParamCaption}\item[{}]{request }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Responsável pelo registro dos pedidos
+
+:RECEBE:
+:request: class django.core.handlers.wsgi.WSGIRequest - Solicitação da pagina de registro do pedido
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_ab68896f46b890de38df0d33bd5aeeeb4}\label{namespacewebpage_1_1views_ab68896f46b890de38df0d33bd5aeeeb4}} 
+\index{webpage.views@{webpage.views}!registrar\_pedido@{registrar\_pedido}}
+\index{registrar\_pedido@{registrar\_pedido}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{registrar\_pedido()}{registrar\_pedido()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily def webpage.\+views.\+registrar\+\_\+pedido (\begin{DoxyParamCaption}\item[{}]{request,  }\item[{}]{pk\+\_\+mesa }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Registra o pedido na mesa correspondente
+
+:RECEBE:
+:request: Requisicao da pagina de registrar o pedido
+:pk_mesa: Chave primaria da mesa
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespacewebpage_1_1views_aa6249a1b84fad27ad3ef80562ba423f5}\label{namespacewebpage_1_1views_aa6249a1b84fad27ad3ef80562ba423f5}} 
+\index{webpage.views@{webpage.views}!trataDados@{trataDados}}
+\index{trataDados@{trataDados}!webpage.views@{webpage.views}}
+\doxysubsubsection{\texorpdfstring{trataDados()}{trataDados()}}
+{\footnotesize\ttfamily def webpage.\+views.\+trata\+Dados (\begin{DoxyParamCaption}\item[{}]{dado,  }\item[{}]{tipo }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb} Função responsável por converter o dado de string para inteiro e checar se é maior ou menor que 1000,
+ adicionando um k se for maior
+
+:RECEBE:
+:dado: string - Dado a ser convertido
+:tipo: string - tipo do dado (g, cal)
+\end{DoxyVerb}
+ 

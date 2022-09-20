@@ -1,0 +1,97 @@
+\hypertarget{classwebpage_1_1models_1_1_prato}{}\doxysection{webpage.\+models.\+Prato Class Reference}
+\label{classwebpage_1_1models_1_1_prato}\index{webpage.models.Prato@{webpage.models.Prato}}
+Inheritance diagram for webpage.\+models.\+Prato\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwebpage_1_1models_1_1_prato}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classwebpage_1_1models_1_1_prato_a5b884cccbfbbbb3043799f6108413d9a}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_prato_a2ab251e6654da4fa05e1b7d68934e7cc}{nome}} = models.\+Char\+Field(max\+\_\+length=350)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_prato_a1d3661db00671a702abde727d0ca631d}{foto}} = models.\+Image\+Field(upload\+\_\+to =\textquotesingle{}Images\textquotesingle{})
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_prato_a3a6ac05ee55d1498fbfaa58dad806e37}{preco}} = Money\+Field(max\+\_\+digits=14, decimal\+\_\+places=2, default\+\_\+currency=\textquotesingle{}BRL\textquotesingle{})
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_prato_a49e2db0eeeeba2485732f20420a9ee7b}{tipo}} = models.\+Char\+Field(max\+\_\+length=100, choices=\mbox{\hyperlink{namespacewebpage_1_1models_a8ef14c5cf054794acad5f49f017eb457}{TIPO\+\_\+\+PRATO}}, default=None)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_prato_a86db50ef89a034da79a6abcd6f8c2374}{ingredientes}} = models.\+Many\+To\+Many\+Field(\mbox{\hyperlink{classwebpage_1_1models_1_1_ingrediente}{Ingrediente}}, through=\textquotesingle{}\mbox{\hyperlink{classwebpage_1_1models_1_1prato__has__ingrediente}{prato\+\_\+has\+\_\+ingrediente}}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_prato_a9285259421b5e9f7c2c6d2400bb784dd}{destaque}} = models.\+Boolean\+Field(default=False)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Representa um prato do restaurante
+
+:ATRIBUTOS:
+    :nome: Nome do prato
+    :foto: Foto do prato
+    :preco: Preço do prato
+    :tipo: Tipo do prato
+    :ingredientes: Chave da tabela intermediária para relação muitos para muitos dos ingredientes do prato
+    :destaque: Especifica se o prato está em destaque
+
+:RETORNA:
+    Nome do prato em maiúsculo
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_prato_a5b884cccbfbbbb3043799f6108413d9a}\label{classwebpage_1_1models_1_1_prato_a5b884cccbfbbbb3043799f6108413d9a}} 
+\index{webpage.models.Prato@{webpage.models.Prato}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!webpage.models.Prato@{webpage.models.Prato}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def webpage.\+models.\+Prato.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_prato_a9285259421b5e9f7c2c6d2400bb784dd}\label{classwebpage_1_1models_1_1_prato_a9285259421b5e9f7c2c6d2400bb784dd}} 
+\index{webpage.models.Prato@{webpage.models.Prato}!destaque@{destaque}}
+\index{destaque@{destaque}!webpage.models.Prato@{webpage.models.Prato}}
+\doxysubsubsection{\texorpdfstring{destaque}{destaque}}
+{\footnotesize\ttfamily webpage.\+models.\+Prato.\+destaque = models.\+Boolean\+Field(default=False)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_prato_a1d3661db00671a702abde727d0ca631d}\label{classwebpage_1_1models_1_1_prato_a1d3661db00671a702abde727d0ca631d}} 
+\index{webpage.models.Prato@{webpage.models.Prato}!foto@{foto}}
+\index{foto@{foto}!webpage.models.Prato@{webpage.models.Prato}}
+\doxysubsubsection{\texorpdfstring{foto}{foto}}
+{\footnotesize\ttfamily webpage.\+models.\+Prato.\+foto = models.\+Image\+Field(upload\+\_\+to =\textquotesingle{}Images\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_prato_a86db50ef89a034da79a6abcd6f8c2374}\label{classwebpage_1_1models_1_1_prato_a86db50ef89a034da79a6abcd6f8c2374}} 
+\index{webpage.models.Prato@{webpage.models.Prato}!ingredientes@{ingredientes}}
+\index{ingredientes@{ingredientes}!webpage.models.Prato@{webpage.models.Prato}}
+\doxysubsubsection{\texorpdfstring{ingredientes}{ingredientes}}
+{\footnotesize\ttfamily webpage.\+models.\+Prato.\+ingredientes = models.\+Many\+To\+Many\+Field(\mbox{\hyperlink{classwebpage_1_1models_1_1_ingrediente}{Ingrediente}}, through=\textquotesingle{}\mbox{\hyperlink{classwebpage_1_1models_1_1prato__has__ingrediente}{prato\+\_\+has\+\_\+ingrediente}}\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_prato_a2ab251e6654da4fa05e1b7d68934e7cc}\label{classwebpage_1_1models_1_1_prato_a2ab251e6654da4fa05e1b7d68934e7cc}} 
+\index{webpage.models.Prato@{webpage.models.Prato}!nome@{nome}}
+\index{nome@{nome}!webpage.models.Prato@{webpage.models.Prato}}
+\doxysubsubsection{\texorpdfstring{nome}{nome}}
+{\footnotesize\ttfamily webpage.\+models.\+Prato.\+nome = models.\+Char\+Field(max\+\_\+length=350)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_prato_a3a6ac05ee55d1498fbfaa58dad806e37}\label{classwebpage_1_1models_1_1_prato_a3a6ac05ee55d1498fbfaa58dad806e37}} 
+\index{webpage.models.Prato@{webpage.models.Prato}!preco@{preco}}
+\index{preco@{preco}!webpage.models.Prato@{webpage.models.Prato}}
+\doxysubsubsection{\texorpdfstring{preco}{preco}}
+{\footnotesize\ttfamily webpage.\+models.\+Prato.\+preco = Money\+Field(max\+\_\+digits=14, decimal\+\_\+places=2, default\+\_\+currency=\textquotesingle{}BRL\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_prato_a49e2db0eeeeba2485732f20420a9ee7b}\label{classwebpage_1_1models_1_1_prato_a49e2db0eeeeba2485732f20420a9ee7b}} 
+\index{webpage.models.Prato@{webpage.models.Prato}!tipo@{tipo}}
+\index{tipo@{tipo}!webpage.models.Prato@{webpage.models.Prato}}
+\doxysubsubsection{\texorpdfstring{tipo}{tipo}}
+{\footnotesize\ttfamily webpage.\+models.\+Prato.\+tipo = models.\+Char\+Field(max\+\_\+length=100, choices=\mbox{\hyperlink{namespacewebpage_1_1models_a8ef14c5cf054794acad5f49f017eb457}{TIPO\+\_\+\+PRATO}}, default=None)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{models_8py}{models.\+py}}\end{DoxyCompactItemize}

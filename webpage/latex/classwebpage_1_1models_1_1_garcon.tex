@@ -1,0 +1,77 @@
+\hypertarget{classwebpage_1_1models_1_1_garcon}{}\doxysection{webpage.\+models.\+Garcon Class Reference}
+\label{classwebpage_1_1models_1_1_garcon}\index{webpage.models.Garcon@{webpage.models.Garcon}}
+Inheritance diagram for webpage.\+models.\+Garcon\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwebpage_1_1models_1_1_garcon}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classwebpage_1_1models_1_1_garcon_ab51e500a8951215c7c452c9b439174d4}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon_a6f745c94d072082ee7d2cf8ba278e244}{user}} = models.\+Foreign\+Key(User, on\+\_\+delete=models.\+CASCADE,default = 1)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon_ad053383b49cd635075af368d06f4eeac}{nome\+\_\+completo}} = models.\+Char\+Field(max\+\_\+length=350)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon_a7ea5d93511a4028fb60b9e8f6fcf5e5b}{email}} = models.\+Char\+Field(unique=True,max\+\_\+length=150,default=\char`\"{}default@email.\+com\char`\"{})
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon_ac9746942de9b540189632393e052fb09}{password}} = models.\+Char\+Field(max\+\_\+length=150,default=\char`\"{}admin123456\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Representa um garçom do restaurante
+
+:ATRIBUTOS:
+    :user: Chave estrangeira referente ao usuário go garçom
+    :nome_completo: Nome completo do garçom
+
+:RETORNA:
+    Nome completo em maiúsculo
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_garcon_ab51e500a8951215c7c452c9b439174d4}\label{classwebpage_1_1models_1_1_garcon_ab51e500a8951215c7c452c9b439174d4}} 
+\index{webpage.models.Garcon@{webpage.models.Garcon}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!webpage.models.Garcon@{webpage.models.Garcon}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def webpage.\+models.\+Garcon.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_garcon_a7ea5d93511a4028fb60b9e8f6fcf5e5b}\label{classwebpage_1_1models_1_1_garcon_a7ea5d93511a4028fb60b9e8f6fcf5e5b}} 
+\index{webpage.models.Garcon@{webpage.models.Garcon}!email@{email}}
+\index{email@{email}!webpage.models.Garcon@{webpage.models.Garcon}}
+\doxysubsubsection{\texorpdfstring{email}{email}}
+{\footnotesize\ttfamily webpage.\+models.\+Garcon.\+email = models.\+Char\+Field(unique=True,max\+\_\+length=150,default=\char`\"{}default@email.\+com\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_garcon_ad053383b49cd635075af368d06f4eeac}\label{classwebpage_1_1models_1_1_garcon_ad053383b49cd635075af368d06f4eeac}} 
+\index{webpage.models.Garcon@{webpage.models.Garcon}!nome\_completo@{nome\_completo}}
+\index{nome\_completo@{nome\_completo}!webpage.models.Garcon@{webpage.models.Garcon}}
+\doxysubsubsection{\texorpdfstring{nome\_completo}{nome\_completo}}
+{\footnotesize\ttfamily webpage.\+models.\+Garcon.\+nome\+\_\+completo = models.\+Char\+Field(max\+\_\+length=350)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_garcon_ac9746942de9b540189632393e052fb09}\label{classwebpage_1_1models_1_1_garcon_ac9746942de9b540189632393e052fb09}} 
+\index{webpage.models.Garcon@{webpage.models.Garcon}!password@{password}}
+\index{password@{password}!webpage.models.Garcon@{webpage.models.Garcon}}
+\doxysubsubsection{\texorpdfstring{password}{password}}
+{\footnotesize\ttfamily webpage.\+models.\+Garcon.\+password = models.\+Char\+Field(max\+\_\+length=150,default=\char`\"{}admin123456\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_garcon_a6f745c94d072082ee7d2cf8ba278e244}\label{classwebpage_1_1models_1_1_garcon_a6f745c94d072082ee7d2cf8ba278e244}} 
+\index{webpage.models.Garcon@{webpage.models.Garcon}!user@{user}}
+\index{user@{user}!webpage.models.Garcon@{webpage.models.Garcon}}
+\doxysubsubsection{\texorpdfstring{user}{user}}
+{\footnotesize\ttfamily webpage.\+models.\+Garcon.\+user = models.\+Foreign\+Key(User, on\+\_\+delete=models.\+CASCADE,default = 1)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{models_8py}{models.\+py}}\end{DoxyCompactItemize}

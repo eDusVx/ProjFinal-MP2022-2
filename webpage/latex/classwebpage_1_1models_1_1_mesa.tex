@@ -1,0 +1,70 @@
+\hypertarget{classwebpage_1_1models_1_1_mesa}{}\doxysection{webpage.\+models.\+Mesa Class Reference}
+\label{classwebpage_1_1models_1_1_mesa}\index{webpage.models.Mesa@{webpage.models.Mesa}}
+Inheritance diagram for webpage.\+models.\+Mesa\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwebpage_1_1models_1_1_mesa}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classwebpage_1_1models_1_1_mesa_a9d2e5a85344517ac708a4d0c0505e4e1}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_mesa_a5bd2608a42aa9a479969a03a5870bf6a}{numero}} = models.\+Integer\+Field(max\+\_\+length=3)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_mesa_ab355c9e68a90670f07fb3c3b3503617e}{quantidade}} = models.\+Integer\+Field(max\+\_\+length=2, blank=True, null=True, default=0)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_mesa_a520a9a0e5c14f83612d82f7a12d65af8}{garcon\+\_\+responsavel}} = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon}{Garcon}}, on\+\_\+delete=models.\+CASCADE, blank=True, null=True, default=None)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Representa uma mesa do restaurante.
+
+:ATRIBUTOS:
+    :numero: Número da mesa
+    :quantidade: Número de pessoas na mesa
+    :garcon_responsavel: Chave estrangeira referente ao garçom responsável pela mesa 
+
+:RETORNA:
+    Numero da mesa
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_mesa_a9d2e5a85344517ac708a4d0c0505e4e1}\label{classwebpage_1_1models_1_1_mesa_a9d2e5a85344517ac708a4d0c0505e4e1}} 
+\index{webpage.models.Mesa@{webpage.models.Mesa}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!webpage.models.Mesa@{webpage.models.Mesa}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def webpage.\+models.\+Mesa.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_mesa_a520a9a0e5c14f83612d82f7a12d65af8}\label{classwebpage_1_1models_1_1_mesa_a520a9a0e5c14f83612d82f7a12d65af8}} 
+\index{webpage.models.Mesa@{webpage.models.Mesa}!garcon\_responsavel@{garcon\_responsavel}}
+\index{garcon\_responsavel@{garcon\_responsavel}!webpage.models.Mesa@{webpage.models.Mesa}}
+\doxysubsubsection{\texorpdfstring{garcon\_responsavel}{garcon\_responsavel}}
+{\footnotesize\ttfamily webpage.\+models.\+Mesa.\+garcon\+\_\+responsavel = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon}{Garcon}}, on\+\_\+delete=models.\+CASCADE, blank=True, null=True, default=None)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_mesa_a5bd2608a42aa9a479969a03a5870bf6a}\label{classwebpage_1_1models_1_1_mesa_a5bd2608a42aa9a479969a03a5870bf6a}} 
+\index{webpage.models.Mesa@{webpage.models.Mesa}!numero@{numero}}
+\index{numero@{numero}!webpage.models.Mesa@{webpage.models.Mesa}}
+\doxysubsubsection{\texorpdfstring{numero}{numero}}
+{\footnotesize\ttfamily webpage.\+models.\+Mesa.\+numero = models.\+Integer\+Field(max\+\_\+length=3)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_mesa_ab355c9e68a90670f07fb3c3b3503617e}\label{classwebpage_1_1models_1_1_mesa_ab355c9e68a90670f07fb3c3b3503617e}} 
+\index{webpage.models.Mesa@{webpage.models.Mesa}!quantidade@{quantidade}}
+\index{quantidade@{quantidade}!webpage.models.Mesa@{webpage.models.Mesa}}
+\doxysubsubsection{\texorpdfstring{quantidade}{quantidade}}
+{\footnotesize\ttfamily webpage.\+models.\+Mesa.\+quantidade = models.\+Integer\+Field(max\+\_\+length=2, blank=True, null=True, default=0)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{models_8py}{models.\+py}}\end{DoxyCompactItemize}
