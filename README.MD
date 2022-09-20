@@ -1,8 +1,10 @@
-Como utilizar o programa:
+   
+   # Foi feito um deploy do sistema portanto é possível acessar pelo endereço: https://ristorante12.herokuapp.com/  :+1:
+O projeto foi feito utilizando Python 3.10.7 e o framework de desenvolvimento web Django.
 
-  O projeto foi feito utilizando Python e o framework de desenvolvimento web Django.
+Para compilar o programa localmente:
 
-1) Ao abrir o arquivo do código,instalar os arquivos necessários abrindo um terminal integrado a pasta principal e digitando:
+1) Abrir o arquivo do código,instalar os arquivos necessários abrindo um terminal integrado a pasta principal e digitando:
 
     pip install -r requirements.txt
 
@@ -22,4 +24,4 @@ Como utilizar o programa:
 
     py manage.py runserver
 
-6) Colar o link HTTP gerado no navegador para acessar o sistema
+6) Será gerado um link HTTPS,basta colá-lo no navegador para rodar o sistema
