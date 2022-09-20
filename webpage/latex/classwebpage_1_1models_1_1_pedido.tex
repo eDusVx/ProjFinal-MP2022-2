@@ -1,0 +1,80 @@
+\hypertarget{classwebpage_1_1models_1_1_pedido}{}\doxysection{webpage.\+models.\+Pedido Class Reference}
+\label{classwebpage_1_1models_1_1_pedido}\index{webpage.models.Pedido@{webpage.models.Pedido}}
+Inheritance diagram for webpage.\+models.\+Pedido\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwebpage_1_1models_1_1_pedido}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_pedido_a9121b88e92f0887be7edecbf9401ccde}{numero}} = models.\+Integer\+Field(max\+\_\+length=1000)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_pedido_a41384d36da61dbe1e0cb709a78ec871a}{pratos}} = models.\+Text\+Field()
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_pedido_a6db27105099909b0eae08f899118e98a}{garcon}} = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon}{Garcon}}, on\+\_\+delete=models.\+CASCADE, default=0)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_pedido_a47ca1c15ab8cf41653fbbcd89af29376}{mesa}} = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_mesa}{Mesa}}, on\+\_\+delete=models.\+CASCADE, null=True, default=None)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_pedido_a1bfb9e7307fd6fee4fac5967432c2031}{prato}} = models.\+Many\+To\+Many\+Field(\mbox{\hyperlink{classwebpage_1_1models_1_1_prato}{Prato}}, through=\textquotesingle{}\mbox{\hyperlink{classwebpage_1_1models_1_1pedido__has__prato}{pedido\+\_\+has\+\_\+prato}}\textquotesingle{})
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_pedido_a4a502dcca2ecebed2b2e459b41cc6035}{status}} = models.\+Char\+Field(max\+\_\+length=100, choices=\mbox{\hyperlink{namespacewebpage_1_1models_a6be42c284ca568892e988c0430875614}{CHOICES}}, default=\char`\"{}Pedido\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Representa um pedido de uma mesa
+
+:ATRIBUTOS:
+    :numero: Número do pedido
+    :pratos: Pratos do pedido
+    :garcon: Garçom responsável pelo pedido
+    :mesa: Mesa do pedido
+    :prato: Chave da tabela intermediária para relação muitos para muitos dos pratos do pedido
+    :status: Status do pedido
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_pedido_a6db27105099909b0eae08f899118e98a}\label{classwebpage_1_1models_1_1_pedido_a6db27105099909b0eae08f899118e98a}} 
+\index{webpage.models.Pedido@{webpage.models.Pedido}!garcon@{garcon}}
+\index{garcon@{garcon}!webpage.models.Pedido@{webpage.models.Pedido}}
+\doxysubsubsection{\texorpdfstring{garcon}{garcon}}
+{\footnotesize\ttfamily webpage.\+models.\+Pedido.\+garcon = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_garcon}{Garcon}}, on\+\_\+delete=models.\+CASCADE, default=0)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_pedido_a47ca1c15ab8cf41653fbbcd89af29376}\label{classwebpage_1_1models_1_1_pedido_a47ca1c15ab8cf41653fbbcd89af29376}} 
+\index{webpage.models.Pedido@{webpage.models.Pedido}!mesa@{mesa}}
+\index{mesa@{mesa}!webpage.models.Pedido@{webpage.models.Pedido}}
+\doxysubsubsection{\texorpdfstring{mesa}{mesa}}
+{\footnotesize\ttfamily webpage.\+models.\+Pedido.\+mesa = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_mesa}{Mesa}}, on\+\_\+delete=models.\+CASCADE, null=True, default=None)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_pedido_a9121b88e92f0887be7edecbf9401ccde}\label{classwebpage_1_1models_1_1_pedido_a9121b88e92f0887be7edecbf9401ccde}} 
+\index{webpage.models.Pedido@{webpage.models.Pedido}!numero@{numero}}
+\index{numero@{numero}!webpage.models.Pedido@{webpage.models.Pedido}}
+\doxysubsubsection{\texorpdfstring{numero}{numero}}
+{\footnotesize\ttfamily webpage.\+models.\+Pedido.\+numero = models.\+Integer\+Field(max\+\_\+length=1000)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_pedido_a1bfb9e7307fd6fee4fac5967432c2031}\label{classwebpage_1_1models_1_1_pedido_a1bfb9e7307fd6fee4fac5967432c2031}} 
+\index{webpage.models.Pedido@{webpage.models.Pedido}!prato@{prato}}
+\index{prato@{prato}!webpage.models.Pedido@{webpage.models.Pedido}}
+\doxysubsubsection{\texorpdfstring{prato}{prato}}
+{\footnotesize\ttfamily webpage.\+models.\+Pedido.\+prato = models.\+Many\+To\+Many\+Field(\mbox{\hyperlink{classwebpage_1_1models_1_1_prato}{Prato}}, through=\textquotesingle{}\mbox{\hyperlink{classwebpage_1_1models_1_1pedido__has__prato}{pedido\+\_\+has\+\_\+prato}}\textquotesingle{})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_pedido_a41384d36da61dbe1e0cb709a78ec871a}\label{classwebpage_1_1models_1_1_pedido_a41384d36da61dbe1e0cb709a78ec871a}} 
+\index{webpage.models.Pedido@{webpage.models.Pedido}!pratos@{pratos}}
+\index{pratos@{pratos}!webpage.models.Pedido@{webpage.models.Pedido}}
+\doxysubsubsection{\texorpdfstring{pratos}{pratos}}
+{\footnotesize\ttfamily webpage.\+models.\+Pedido.\+pratos = models.\+Text\+Field()\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_pedido_a4a502dcca2ecebed2b2e459b41cc6035}\label{classwebpage_1_1models_1_1_pedido_a4a502dcca2ecebed2b2e459b41cc6035}} 
+\index{webpage.models.Pedido@{webpage.models.Pedido}!status@{status}}
+\index{status@{status}!webpage.models.Pedido@{webpage.models.Pedido}}
+\doxysubsubsection{\texorpdfstring{status}{status}}
+{\footnotesize\ttfamily webpage.\+models.\+Pedido.\+status = models.\+Char\+Field(max\+\_\+length=100, choices=\mbox{\hyperlink{namespacewebpage_1_1models_a6be42c284ca568892e988c0430875614}{CHOICES}}, default=\char`\"{}Pedido\char`\"{})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{models_8py}{models.\+py}}\end{DoxyCompactItemize}
