@@ -1,0 +1,70 @@
+\hypertarget{classwebpage_1_1models_1_1_estoque}{}\doxysection{webpage.\+models.\+Estoque Class Reference}
+\label{classwebpage_1_1models_1_1_estoque}\index{webpage.models.Estoque@{webpage.models.Estoque}}
+Inheritance diagram for webpage.\+models.\+Estoque\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classwebpage_1_1models_1_1_estoque}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classwebpage_1_1models_1_1_estoque_ae1d1e3d427f71172099d6098451bac3a}{\+\_\+\+\_\+str\+\_\+\+\_\+}} (self)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_estoque_ac1932afb42ec1e518e0ef881be14a35a}{ingrediente}} = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_ingrediente}{Ingrediente}}, on\+\_\+delete=models.\+CASCADE)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_estoque_aef95727ee5730caa8abd09676c7dbc06}{quantidade}} = models.\+Integer\+Field(max\+\_\+length=3)
+\item 
+\mbox{\hyperlink{classwebpage_1_1models_1_1_estoque_aff111285f6d93f5610dfda7ee4e1bf55}{validade}} = models.\+Date\+Field(default=datetime.\+now())
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Representa o estoque de ingredientes do restaurante
+
+:ATRIBUTOS:
+    :ingrediente: Chave estrangeira refente ao ingrediente a ser estocado
+    :quantidade: Quantidade do ingrediente a ser estocado
+    :validade: Validade do ingrediente a ser estocado
+
+:RETORNA:
+    Nome do ingrediente
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_estoque_ae1d1e3d427f71172099d6098451bac3a}\label{classwebpage_1_1models_1_1_estoque_ae1d1e3d427f71172099d6098451bac3a}} 
+\index{webpage.models.Estoque@{webpage.models.Estoque}!\_\_str\_\_@{\_\_str\_\_}}
+\index{\_\_str\_\_@{\_\_str\_\_}!webpage.models.Estoque@{webpage.models.Estoque}}
+\doxysubsubsection{\texorpdfstring{\_\_str\_\_()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def webpage.\+models.\+Estoque.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_estoque_ac1932afb42ec1e518e0ef881be14a35a}\label{classwebpage_1_1models_1_1_estoque_ac1932afb42ec1e518e0ef881be14a35a}} 
+\index{webpage.models.Estoque@{webpage.models.Estoque}!ingrediente@{ingrediente}}
+\index{ingrediente@{ingrediente}!webpage.models.Estoque@{webpage.models.Estoque}}
+\doxysubsubsection{\texorpdfstring{ingrediente}{ingrediente}}
+{\footnotesize\ttfamily webpage.\+models.\+Estoque.\+ingrediente = models.\+Foreign\+Key(\mbox{\hyperlink{classwebpage_1_1models_1_1_ingrediente}{Ingrediente}}, on\+\_\+delete=models.\+CASCADE)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_estoque_aef95727ee5730caa8abd09676c7dbc06}\label{classwebpage_1_1models_1_1_estoque_aef95727ee5730caa8abd09676c7dbc06}} 
+\index{webpage.models.Estoque@{webpage.models.Estoque}!quantidade@{quantidade}}
+\index{quantidade@{quantidade}!webpage.models.Estoque@{webpage.models.Estoque}}
+\doxysubsubsection{\texorpdfstring{quantidade}{quantidade}}
+{\footnotesize\ttfamily webpage.\+models.\+Estoque.\+quantidade = models.\+Integer\+Field(max\+\_\+length=3)\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classwebpage_1_1models_1_1_estoque_aff111285f6d93f5610dfda7ee4e1bf55}\label{classwebpage_1_1models_1_1_estoque_aff111285f6d93f5610dfda7ee4e1bf55}} 
+\index{webpage.models.Estoque@{webpage.models.Estoque}!validade@{validade}}
+\index{validade@{validade}!webpage.models.Estoque@{webpage.models.Estoque}}
+\doxysubsubsection{\texorpdfstring{validade}{validade}}
+{\footnotesize\ttfamily webpage.\+models.\+Estoque.\+validade = models.\+Date\+Field(default=datetime.\+now())\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{models_8py}{models.\+py}}\end{DoxyCompactItemize}
