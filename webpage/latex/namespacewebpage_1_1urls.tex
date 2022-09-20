@@ -1,0 +1,35 @@
+\hypertarget{namespacewebpage_1_1urls}{}\doxysection{webpage.\+urls Namespace Reference}
+\label{namespacewebpage_1_1urls}\index{webpage.urls@{webpage.urls}}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \mbox{\hyperlink{namespacewebpage_1_1urls_ae6c1773924f9f58a24f669ae44b6e511}{urlpatterns}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacewebpage_1_1urls_ae6c1773924f9f58a24f669ae44b6e511}\label{namespacewebpage_1_1urls_ae6c1773924f9f58a24f669ae44b6e511}} 
+\index{webpage.urls@{webpage.urls}!urlpatterns@{urlpatterns}}
+\index{urlpatterns@{urlpatterns}!webpage.urls@{webpage.urls}}
+\doxysubsubsection{\texorpdfstring{urlpatterns}{urlpatterns}}
+{\footnotesize\ttfamily list webpage.\+urls.\+urlpatterns}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 =  [}
+\DoxyCodeLine{2     path(\textcolor{stringliteral}{''}, views.index, name=\textcolor{stringliteral}{"{}index"{}}),}
+\DoxyCodeLine{3     path(\textcolor{stringliteral}{'login/'}, views.loginPage, name=\textcolor{stringliteral}{"{}login"{}}),  }
+\DoxyCodeLine{4     path(\textcolor{stringliteral}{'logout/'}, views.logoutUser, name=\textcolor{stringliteral}{"{}logout"{}}),}
+\DoxyCodeLine{5     path(\textcolor{stringliteral}{'funcionarios/'}, views.home, name=\textcolor{stringliteral}{"{}home"{}}),}
+\DoxyCodeLine{6     path(\textcolor{stringliteral}{'mesa/<str:pk\_test>/'}, views.numero\_mesa, name=\textcolor{stringliteral}{"{}customer"{}}),}
+\DoxyCodeLine{7     path(\textcolor{stringliteral}{'chose\_table/'}, views.chose\_table, name=\textcolor{stringliteral}{"{}chose\_table"{}}),}
+\DoxyCodeLine{8     path(\textcolor{stringliteral}{'chose\_table/<str:pk>/'}, views.chose\_table, name=\textcolor{stringliteral}{"{}chose\_table"{}}),}
+\DoxyCodeLine{9     path(\textcolor{stringliteral}{'update\_order/<str:pk>/'}, views.atualizar\_pedido, name=\textcolor{stringliteral}{"{}update\_order"{}}),}
+\DoxyCodeLine{10     path(\textcolor{stringliteral}{'registrar\_pedido/<str:pk\_mesa>/'}, views.registrar\_pedido, name=\textcolor{stringliteral}{"{}registrar\_pedido"{}}),}
+\DoxyCodeLine{11     path(\textcolor{stringliteral}{'fechar\_pedido/<str:pk>/'}, views.fechar\_pedido, name=\textcolor{stringliteral}{"{}fechar\_pedido"{}}),}
+\DoxyCodeLine{12     \textcolor{comment}{\# path('fechar\_pedido/', views.fechar\_pedido, name="{}fechar\_pedido"{}),}}
+\DoxyCodeLine{13     path(\textcolor{stringliteral}{'delete\_order/<str:pk>/'}, views.deletar\_pedido, name=\textcolor{stringliteral}{"{}delete\_order"{}}),}
+\DoxyCodeLine{14     \textcolor{comment}{\# path('api/', include((router.urls, 'app\_name'))),}}
+\DoxyCodeLine{15 ]+ static(settings.STATIC\_URL, document\_root=settings.STATIC\_ROOT)}
+
+\end{DoxyCode}

@@ -14,6 +14,11 @@ from django.http import HttpResponseRedirect
 
 
 def index(request):
+    """Funcao responsavel gerar a pagina inicial
+
+    RECEBE:
+    :request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso para a pagina
+    """
     tipos = []
     if 'tipo' in request.GET and request.GET['tipo'] != "":
         tipos = request.GET['tipo'] if type(request.GET['tipo']) in (
@@ -77,6 +82,13 @@ def index(request):
 
 
 def trataDados(dado, tipo):
+    """ Função responsável por converter o dado de string para inteiro e checar se é maior ou menor que 1000,
+     adicionando um k se for maior
+
+    :RECEBE:
+    :dado: string - Dado a ser convertido
+    :tipo: string - tipo do dado (g, cal)
+    """
     if dado % 1 == 0:
         dado = str(
             int(dado))+f" {tipo}" if int(dado) < 1000 else str(int(dado)/1000)+f" k{tipo}"
@@ -87,6 +99,11 @@ def trataDados(dado, tipo):
 
 
 def loginPage(request):
+    """Responsavel por autenticar os dados de usuario e retornar ou nao a pagina de login
+    
+    :RECEBE:
+    :request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso a pagina de usuario autenticacado
+    """
     if request.user.is_authenticated:
         return redirect('home')
     else:
@@ -107,6 +124,10 @@ def loginPage(request):
 
 
 def logoutUser(request):
+    """Responsavel pelo logout de usuario autenticado
+    
+    :RECEBE:
+    :request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso a pagina de login"""
     logout(request)
     return redirect('login')
 
@@ -114,6 +135,10 @@ def logoutUser(request):
 @login_required(login_url='login')
 
 def home(request):
+    """Responsavel pela webpage home dos funcionarios
+    
+    :request: class django.core.handlers.wsgi.WSGIRequest - Requisicao de acesso a pagina Home
+    """
     current_garcon = Garcon.objects.get(user=request.user)
     if request.user.is_superuser:
         orders = Pedido.objects.all()
@@ -133,11 +158,22 @@ def home(request):
  
 @login_required(login_url='login')
 def registrar_pedido(request):
+    """Responsável pelo registro dos pedidos
+    
+    :RECEBE:
+    :request: class django.core.handlers.wsgi.WSGIRequest - Solicitação da pagina de registro do pedido
+    """
     return
     
     
 @login_required(login_url='login')
 def chose_table(request,pk=None):
+    """Seleciona uma das mesas disponíveis e altera a situação atual da mesa
+    
+    :RECEBE:
+    :request: class django.core.handlers.wsgi.WSGIRequest - Requisicao para pagina de escolher uma mesa
+    :pk: chave - Chave primaria da mesa
+    """
     Mesas = []
     current_garcon = Garcon.objects.get(user=request.user)
     mesasRaw = Mesa.objects.all()
@@ -157,6 +193,12 @@ def chose_table(request,pk=None):
 
 @login_required(login_url='login')
 def numero_mesa(request, pk_test):
+    """Define o número das mesas registradas
+
+    :RECEBE:
+    :request: class django.core.handlers.wsgi.WSGIRequest - Requisicao para a pagina das mesas
+    :pk_test: Chave primaria da mesa
+    """
     customer = Mesa.objects.get(numero=pk_test)
     orders = customer.pedido_set.all()
     order_count = orders.count()
@@ -171,7 +213,12 @@ def numero_mesa(request, pk_test):
 
 @login_required(login_url='login')
 def atualizar_pedido(request, pk):
-
+    """Atualiza a situação atual do pedido
+    
+    :RECEBE:
+    :request: class django.core.handlers.wsgi.WSGIRequest - Requisiçao para a pagina atualizar o pedido
+    :pk: chave - Chave primária do pedido
+    """
     if request.user.is_superuser:
         current_garcon = Garcon.objects.all()
         current_mesa = Mesa.objects.all()
@@ -217,6 +264,12 @@ def deletar_pedido(request, pk):
 
 @login_required(login_url='login')
 def registrar_pedido(request,pk_mesa):
+    """Registra o pedido na mesa correspondente
+    
+    :RECEBE:
+    :request: Requisicao da pagina de registrar o pedido
+    :pk_mesa: Chave primaria da mesa
+    """
     pratos = Prato.objects.all()
     mesa = Mesa.objects.get(numero=pk_mesa)
     p = []
@@ -266,6 +319,13 @@ def registrar_pedido(request,pk_mesa):
 
 @login_required(login_url='login')
 def fechar_pedido(request,pk):
+    """Fecha o pedido do cliente e soma os valores dos pratos solicitados
+
+    :RECEBE:
+    :request: Requisicao da pagina de fechar o pedido
+    :pk: Chave primaria do pedido
+    
+    """
     mesa = Mesa.objects.get(id=pk)
     pedidos = Pedido.objects.filter(mesa=mesa)
     conta = 0
