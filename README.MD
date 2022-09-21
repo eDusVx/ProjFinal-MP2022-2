@@ -1,4 +1,4 @@
-   
+   # Sistema de restaurante feito em Python / Django
    # Foi feito um deploy do sistema portanto é possível acessar pelo endereço: https://ristorante12.herokuapp.com/  :+1:
 O projeto foi feito utilizando Python 3.10.7 e o framework de desenvolvimento web Django.
 
